@@ -1,7 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("Example", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT
+  var Planets = sequelize.define("Planets", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
+    planet_name: DataTypes.TEXT,
+    orbital_period: DataTypes.DOUBLE,
+    planet_mass: DataTypes.DOUBLE,
+    distance: DataTypes.DOUBLE
   });
-  return Example;
+  return Planets;
 };
