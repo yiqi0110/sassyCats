@@ -1,23 +1,29 @@
 body {
     background-image: url(../images/characterBG.png);
     background-position: center;
-    font-family: saucer;
     color: white;
-    }
+    font-family: kenney;
+
+}
 
 @font-face {
     font-family: saucer;
     src: url(./SaucerBB.ttf);
-  }
+}
 
 .jumbotron {
     opacity: 0.9;
-    background-color: rgb(103, 121, 170);
-   
+    background-color: rgb(30, 37, 56);
+   }
+
+@font-face {
+    font-family: kenney;
+    src: url(./KenneySpace.ttf);
 }
 
-h1{
+h1 {
     font-size: 65px;
+    font-family: saucer;
 }
 
 .charSelectImg {
@@ -26,6 +32,18 @@ h1{
 }
 
 #charCreateForm {
-   margin: auto;
+    margin: auto;
 }
 
+
+#blastOff {
+    margin-top: 40px;
+    font-size: 25px;
+    box-shadow: 0px 0px 50px 15px #8a00ca;
+    background: #8700ca3D;
+    color: white;
+}
+
+#charButton {
+    text-align: center;
+}
