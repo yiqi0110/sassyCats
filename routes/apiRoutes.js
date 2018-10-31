@@ -17,8 +17,11 @@ module.exports = function (app) {
 
   // Create a new example
   app.post("/api/scores", function (req, res) {
-    db.Scores.create(req.body).then(function (dbScores) {
-      res.json(dbScores);
+    db.Scores.create({
+      player_name: req.body.player_name,
+      player_score: req.body.player_score
+    }).then(function (results) {
+      res.json(results);
     });
   });
 };
