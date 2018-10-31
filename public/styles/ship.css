@@ -1,18 +1,80 @@
 body {
+    background-color: black;
     background-image: url(../images/shipBG.png);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: saucer;
-    color: white;
+    color: rgb(248, 255, 176);
     text-align: center;
+    font-family: kenney;
+    text-shadow: black 2px 2px 1px;
 }
 
 @font-face {
     font-family: saucer;
     src: url(./SaucerBB.ttf);
-  }
+}
+
+@font-face {
+    font-family: kenney;
+    src: url(./KenneySpace.ttf);
+}
 
 .jumbotron {
     opacity: 0.9;
     background-color: rgb(92, 51, 146);
+    background-image: url(../images/bridge.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    margin-top: 35px;
+    padding: 1rem 1rem;
+    height: 32rem;
+}
+
+.ship1 {
+    /* Ship row 1 */
+    height: 20rem;
+}
+
+h1 {
+    font-family: saucer;
+    font-size: 3rem;
+    color: chocolate;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 1.2rem;
+    border-bottom: 3px solid white;
+}
+
+p {
+    font-size: 1.4rem; 
+}
+
+li {
+    font-size: 0.9rem;
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+span {
+    color: chocolate;
+}
+
+.sprite {
+    background-image: url(../images/spaceCat.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 250px;
+}
+
+button {
+    box-shadow: 0px 0px 50px 15px #8a00ca;
+    background: #8700ca3d;
+    color: rgb(248, 255, 176);
+    border-color: black;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
