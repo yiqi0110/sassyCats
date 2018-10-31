@@ -4,12 +4,12 @@
 
 body {
   background-image: url(../images/spaceBG.jpg);
-  
+
 }
 
 #title {
   text-align: center;
- 
+
 }
 
 @font-face {
@@ -42,5 +42,5 @@ body {
   border-radius: 25px;
   background-image: url(../images/start.jpg);
   background-position: center;
-  border: 
+  border: 5px 5px purple;
 }
