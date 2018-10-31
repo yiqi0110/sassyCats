@@ -1,0 +1,18 @@
+body {
+    background-image: url(../images/endingBG.gif);
+    
+    background-size: cover;
+    font-family: saucer;
+    color: white;
+    text-align: center;
+}
+
+@font-face {
+    font-family: saucer;
+    src: url(./SaucerBB.ttf);
+  }
+
+  .jumbotron {
+    opacity: 0.9;
+    background-color: rgb(39, 38, 104);
+}

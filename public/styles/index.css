@@ -1,0 +1,46 @@
+.list-group-item {
+  line-height: 2.5;
+}
+
+body {
+  background-image: url(../images/spaceBG.jpg);
+
+}
+
+#title {
+  text-align: center;
+
+}
+
+@font-face {
+  font-family: sasquatch;
+  src: url(./Sasquatch.ttf);
+}
+
+#sassyTitle {
+  font-size: 100px;
+  font-family: sasquatch;
+  color: white;
+  margin-bottom: -50px;
+}
+
+@font-face {
+  font-family: saucer;
+  src: url(./SaucerBB.ttf);
+}
+
+#spaceTitle {
+  color: white;
+  font-size: 75px;
+  font-family: saucer;
+  margin-bottom: -25px;
+}
+
+#startButton {
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+  background-image: url(../images/start.jpg);
+  background-position: center;
+  border: 5px 5px purple;
+}
