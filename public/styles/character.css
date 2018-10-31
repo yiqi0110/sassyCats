@@ -3,20 +3,29 @@ body {
     background-position: center;
     font-family: saucer;
     color: white;
-    text-align: center;
-}
+    }
 
 @font-face {
     font-family: saucer;
     src: url(./SaucerBB.ttf);
   }
 
+.jumbotron {
+    opacity: 0.9;
+    background-color: rgb(103, 121, 170);
+   
+}
+
 h1{
-    font-size: 50px;
+    font-size: 65px;
 }
 
 .charSelectImg {
     width: 100px;
     height: 100px;
+}
+
+#charCreateForm {
+   margin: auto;
 }
 
