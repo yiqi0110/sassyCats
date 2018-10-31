@@ -1,3 +1,23 @@
+$("#startButton").click(function(){
+  location.href = "/character";
+});
+
+$("#blastOff").click(function(){
+  var newPlayer = {
+    player_name: $("#charName").val().trim(),
+    player_score: 0
+  }
+
+  submitPlayer(newPlayer);
+
+});
+
+function submitPlayer(Player){
+  $.post("/api/scores/", Player, function() {
+    window.location.href = "/ship";
+  });
+};
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
