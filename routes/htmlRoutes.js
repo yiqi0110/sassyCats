@@ -1,15 +1,28 @@
-var db = require("../models");
+var path = require("path");
+
+//index => character => ship => planet => back to ship or ending
 
 module.exports = function(app) {
   // Load index page
-  // app.get("/", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.render("index", {
-  //       msg: "Welcome!",
-  //       examples: dbExamples
-  //     });
-  //   });
-  // });
+  app.get("/", function(req, res) {
+      res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
+
+  app.get("/character", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/character.html"));
+  });
+
+  app.get("/ship", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/ship.html"));
+  });
+
+  app.get("/planet", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/planet.html"));
+  });
+
+  app.get("/ending", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/ending.html"));
+  });
   
   // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
