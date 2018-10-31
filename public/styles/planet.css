@@ -1,0 +1,14 @@
+body {
+    background-image: url(../images/planetBG.jpg);
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: saucer;
+    color: white;
+    text-align: center;
+}
+
+@font-face {
+    font-family: saucer;
+    src: url(./SaucerBB.ttf);
+  }

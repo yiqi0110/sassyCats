@@ -1,0 +1,18 @@
+body {
+    background-image: url(../images/shipBG.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: saucer;
+    color: white;
+    text-align: center;
+}
+
+@font-face {
+    font-family: saucer;
+    src: url(./SaucerBB.ttf);
+  }
+
+.jumbotron {
+    opacity: 0.9;
+    background-color: rgb(92, 51, 146);
+}

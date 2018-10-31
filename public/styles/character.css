@@ -1,0 +1,22 @@
+body {
+    background-image: url(../images/characterBG.png);
+    background-position: center;
+    font-family: saucer;
+    color: white;
+    text-align: center;
+}
+
+@font-face {
+    font-family: saucer;
+    src: url(./SaucerBB.ttf);
+  }
+
+h1{
+    font-size: 50px;
+}
+
+.charSelectImg {
+    width: 100px;
+    height: 100px;
+}
+
