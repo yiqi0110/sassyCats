@@ -9,10 +9,9 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/randomplanets", function (req, res) {
-    db.Planets.findAll({
-      order: Sequelize.literal('rand()'),
-      limit: 10
+  app.get("/api/randomplanet", function (req, res) {
+    db.Planets.findOne({
+      order: Sequelize.literal('rand()')
     }).then(function (dbPlanets) {
       res.json(dbPlanets)
     });

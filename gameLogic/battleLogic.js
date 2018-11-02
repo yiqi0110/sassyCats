@@ -116,5 +116,5 @@ module.exports = {
             data: score
         });
 
-}}
+}};
 
