@@ -1,0 +1,35 @@
+body {
+    background-image: url(../images/endingBG.gif);
+    
+    background-size: cover;
+    font-family: kenney;
+    color: white;
+    text-align: center;
+}
+
+@font-face {
+    font-family: saucer;
+    src: url(./SaucerBB.ttf);
+  }
+h1 {
+    font-family: saucer;
+    font-size: 65px;
+}
+
+  .jumbotron {
+    opacity: 0.9;
+    background-color: rgb(30, 37, 56);
+}
+
+@font-face {
+    font-family: kenney;
+    src: url(./KenneySpace.ttf);
+}
+
+button {
+    margin: 40px;
+    font-size: 25px;
+    box-shadow: 0px 0px 50px 15px #8a00ca;
+    background: #8700ca3D;
+    color: white;
+}

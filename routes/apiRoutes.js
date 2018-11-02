@@ -1,24 +1,43 @@
 var db = require("../models");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+module.exports = function (app) {
+  // Get all planets
+  app.get("/api/planets", function (req, res) {
+    db.Planets.findAll({}).then(function (dbPlanets) {
+      res.json(dbPlanets);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Get all users and scores
+  app.get("/api/scores", function (req, res) {
+    db.Scores.findAll({}).then(function (dbScores) {
+      res.json(dbScores);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new user with score
+  app.post("/api/scores", function (req, res) {
+    db.Scores.create({
+      player_name: req.body.player_name,
+      player_score: req.body.player_score
+    }).then(function (results) {
+      res.json(results);
     });
+  });
+
+  // PUT route for updating scores
+  app.put("/api/scores", function (req, res) {
+    // Add code here to update a post using the values in req.body, where the id is equal to
+    // req.body.id and return the result to the user using res.json
+    db.Scores.update({
+      player_name: req.body.player_name,
+      player_score: req.body.player_score
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (results) {
+      res.json(results);
+    })
   });
 };
