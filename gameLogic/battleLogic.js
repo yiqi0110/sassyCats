@@ -115,4 +115,4 @@ module.exports = {
             url: "/api/scores",
             data: score
         });
-};
+}}
