@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,50 +8,115 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./styles/planet.css">
+
     <title>Sassy Cat in Space</title>
 </head>
+
 <body>
-        <div class="container">
-                <div class="jumbotron">
-                    <h1>Attack the Planet</h1>
-                    <div class="container">
-                        <div class="row row1">
-                            <!-- Stats -->
-                            <div class="col">
-                                <h4>Planet Stats</h4>
-                                <br>
-                                <li>Planet Type: <span class="planetDef">Desert</span></li>
-                                <li>Defense: <span class="planetDef">32</span></li>
-                                <li>Time to conquer: <span class="planetTime">3</span></li>
-                                <li>Rolls left to conquer: <span class="planetLeft">19</span></li>
-                            </div>
-                            <!-- Options -->
-                            <div class="col">
-                                <h4>Attack log</h4>
-                                <br>
-                                <li>You rolled a <span>7</span></li>
-                                <li>The planet defends for <span>9</span></li>
-                                <li>You <span>lose</span> this time</li>
-                            </div>
+
+    <!-- Game screen -->
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Attack the Planet</h1>
+            <div class="container">
+                <div class="row">
+                    <!-- Stats -->
+                    <div class="col">
+                        <h4>Planet Stats</h4>
+                        <br>
+                        <li>Planet Type: <span id="planetType">Desert</span></li>
+                        <li>Planet Defense: <span id="planetDef">?</span></li>
+                        <li>Time left to conquer: <span id="planetLeft">?</span></li>
+                    </div>
+                    <!-- Options -->
+                    <div class="col">
+                        <h4>Attack log</h4>
+                        <br>
+                        <li>You attack with <span id="userRoll">?</span> soldiers</li>
+                        <li>The planet defends with <span id="compRoll">?</span> soldiers</li>
+                        <li>You <span id="winlose">haven't fought</span> this battle</li>
+                    </div>
+                </div>
+
+                <!-- Row 2 - Feedback text -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div id="doBetter">This is where the sassy text goes!</div>
                         </div>
-        
-                        <!-- Row 2 - Choices -->
-                        <div class="row ">
-                            <div class="col">
-                                <button>Roll again?</button>
-                            </div>
-                            <div class="col">
-                                <button>Give up like a wuss</button>
-                            </div>
+                    </div>
+                </div>
+
+
+                <!-- Row 3 - Choices -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" id="attack">Attack</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" id="charge">Charge</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" id="block">Block</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Outcome modal - Show whether you won or lost -->
+        <div class="modal fade" id="outcomeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                    </div>
+                    <div class="modal-body">
+                        Congratulations! You <span id="outcome"></span>!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" href="/ship">Return to Ship</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prison modal - Get enslaved or don't-->
+        <div class="modal fade" id="prisonModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Congratulations!</h5>
+                    </div>
+                    <div class="modal-body"><span id="prisonBody">
+                            You have no prison body.</span>
+                    </div>
+                    <!-- Fight button -->
+                    <div class="modal-footer">
+                        <button type="button" id="fight" class="btn btn-secondary mx-4">Fight</button>
+                        <!-- Die in Slavery -->
+                        <button type="button" id="die" class="btn btn-secondary mx-4" href="/ending">Die</button>
+                        <button type="button" id="escape" class="btn btn-secondary mx-4" href="/ship">Return to Ship</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
+
+<!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
+<!-- Popper -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+
+<!-- Local javascript -->
+<script src="./js/planet.js"></script>
+
 </html>
