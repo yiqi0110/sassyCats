@@ -73,7 +73,7 @@ module.exports = {
                 console.log(this.startBattle.giveUp);
             }
         };
-        if (planetsTurn){
+        if (planetsTurn) {
             if (moves.attack) {
                 Player.hp = planet.attk - Player.hp;
                 console.log("ACK!!! Why did you allow them to damage me!? Your remaining health is " + Player.hp + ".");
@@ -87,7 +87,7 @@ module.exports = {
         };
     },
 
-    battleText:{
+    battleText: {
         startBattle: {
             tooBig: "What?! You wish to fight this planet?! Your skills are not as great as you think. . . You might as well give up. But if you really wish to fight I'll help since you'll need it. . . ",
             tooSmall: "Nani!!! You really wish to waste your time on this measley planet? I suppose I'll help you wipe its existance from the universe. . . I'm not saying your that good. . . Just that your enemy is so weak.",
@@ -109,10 +109,12 @@ module.exports = {
             slavery: "I can't say I'm suprised you ingrate.",
         }
     },
-      updateScore: function (score){
+    updateScore: function (score) {
         $.ajax({
             method: "PUT",
             url: "/api/scores",
             data: score
         });
+
 }};
+
