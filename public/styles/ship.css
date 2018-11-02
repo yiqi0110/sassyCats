@@ -78,3 +78,7 @@ button {
     padding-top: 8px;
     padding-bottom: 8px;
 }
+
+button:hover {
+    background: #8700ca9a;
+}
