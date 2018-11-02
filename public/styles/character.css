@@ -14,7 +14,7 @@ body {
 .jumbotron {
     opacity: 0.9;
     background-color: rgb(30, 37, 56);
-   }
+}
 
 @font-face {
     font-family: kenney;
@@ -46,4 +46,14 @@ h1 {
 
 #charButton {
     text-align: center;
+}
+
+.modal-content {
+    background-color: rgb(30, 37, 56);
+}
+
+.invalid-body {
+    margin: 2em;
+    text-align: center;
+    line-height: 2em;
 }
