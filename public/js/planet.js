@@ -51,7 +51,7 @@ $(document).ready(function () {
         } else {
             // Prison modal
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
-            $("#prisonModal").find("#escape").hide();
+            $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");
         }
 
@@ -64,7 +64,7 @@ $(document).ready(function () {
             $("#prisonModal").find("#prisonBody").text("Beyond all odds you managed to slip past the guards and escape.  I can't believe it.  I didn't think you had any skills or worth as a cat.");
             $("#prisonModal").find("#die").hide();
             $("#prisonModal").find("#fight").hide();
-            $("#prisonModal").find("#escape").show();
+            $("#prisonModal").find(".escape").show();
         } else {
             // You die in slavery
             $("#prisonModal").find("#prisonBody").text("You were caught and the guards made an example out of you.  The other prisoners will think twice after seeing what happened to you.");
@@ -75,8 +75,10 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#die", function () {
-
-
+        location.href = "/ending";
     });
-
+    
+    $(document).on("click", ".escape", function () {
+        location.href = "/ship";
+    });
 })
