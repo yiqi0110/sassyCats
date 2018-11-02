@@ -1,4 +1,5 @@
 var db = require("../models");
+var Sequelize = require("../models").sequelize;
 
 module.exports = function (app) {
   // Get all planets
@@ -7,6 +8,15 @@ module.exports = function (app) {
       res.json(dbPlanets);
     });
   });
+
+  app.get("/api/randomplanets", function (req, res) {
+    db.Planets.findAll({
+      order: Sequelize.literal('rand()'),
+      limit: 10
+    }).then(function (dbPlanets) {
+      res.json(dbPlanets)
+    });
+  })
 
   // Get all users and scores
   app.get("/api/scores", function (req, res) {
