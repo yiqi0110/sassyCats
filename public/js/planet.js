@@ -8,7 +8,7 @@ $(document).ready(function () {
     var i = Math.floor(Math.random() * 10);
     // Set image and ptype
     $("#planetType").text(ptype[i]);
-    $(".jumbotron").css("background-image", "url(../public/images/" + background[i] + ".png)");
+    $(".jumbotron").css("background-image", "url(images/" + background[i] + ".png)");
 
     // Amount of rolls to conquer planet
     var time = 9;
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
             // If user wins
             if (user > comp) {
-                $("#winlose").text("win");
+                $("#winlose").text("won");
                 def = def - user;
                 $("#planetDef").text(def);
                 // and planet defense is 0
@@ -39,8 +39,10 @@ $(document).ready(function () {
                     $("#outcomeModal").modal("toggle");
                 }
                 // User loses
+            } else if (user === comp) {
+                $("#winlose").text("tied");
             } else {
-                $("#winlose").text("lose");
+                $("#winlose").text("lost");
             }
 
             // Update time left
