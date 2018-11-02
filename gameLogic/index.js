@@ -30,6 +30,7 @@ module.exports = {
     checkIfRetire: function(){
         if(wish2retire){
             ship.giveUp(percent);
+            console.log(retireEnding.stuff);
         } else {
             // return to game
         }
