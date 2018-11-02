@@ -13,7 +13,8 @@ module.exports = function (app) {
     db.Planets.findOne({
       order: Sequelize.literal('rand()')
     }).then(function (dbPlanets) {
-      res.json(dbPlanets)
+      res.json(dbPlanets);
+      return res.end();
     });
   })
 
