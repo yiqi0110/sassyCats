@@ -19,6 +19,11 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "username": "g6m6ddo389paxhp7",
+    "password": "s3lmodo95cjzo069",
+    "database": "sassycatDB",
+    "host": "s02pyosv8y20mln1"
+    
   }
 }
