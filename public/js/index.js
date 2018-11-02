@@ -1,19 +1,33 @@
-$("#startButton").click(function(){
+$("#startButton").click(function () {
   location.href = "/character";
 });
 
-$("#blastOff").click(function(){
-  var newPlayer = {
-    player_name: $("#charName").val().trim(),
-    player_score: 0
+$("#blastOff").click(function () {
+
+  //Form validation
+  function validate() {
+    var valid = true;
+    $(".form-control").each(function () {
+      if ($(this).val() === "") {
+        valid = false;
+      }
+    });
+    return valid
+  };
+
+  if (validate()) {
+    var newPlayer = {
+      player_name: $("#charName").val().trim(),
+      player_score: 0
+    }
+    submitPlayer(newPlayer);
+  } else {
+    $("#invalid-modal").modal("show");
   }
-
-  submitPlayer(newPlayer);
-
 });
 
-function submitPlayer(Player){
-  $.post("/api/scores/", Player, function() {
+function submitPlayer(Player) {
+  $.post("/api/scores/", Player, function () {
     window.location.href = "/ship";
   });
 };
@@ -26,7 +40,7 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveExample: function (example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -36,13 +50,13 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+  getExamples: function () {
     return $.ajax({
       url: "api/examples",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deleteExample: function (id) {
     return $.ajax({
       url: "api/examples/" + id,
       type: "DELETE"
@@ -51,9 +65,9 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+var refreshExamples = function () {
+  API.getExamples().then(function (data) {
+    var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
@@ -81,7 +95,7 @@ var refreshExamples = function() {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var example = {
@@ -94,7 +108,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveExample(example).then(function() {
+  API.saveExample(example).then(function () {
     refreshExamples();
   });
 
@@ -104,12 +118,12 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
+  API.deleteExample(idToDelete).then(function () {
     refreshExamples();
   });
 };
