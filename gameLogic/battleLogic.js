@@ -73,5 +73,12 @@ module.exports = {
                 planet.def = planet.def * 3;
             }
         };
+    },
+    updateScore: function (score){
+        $.ajax({
+            method: "PUT",
+            url: "/api/scores",
+            data: score
+        });
     }
 };
