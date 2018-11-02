@@ -86,6 +86,7 @@ module.exports = {
             }
         };
     },
+
     battleText:{
         startBattle: {
             tooBig: "What?! You wish to fight this planet?! Your skills are not as great as you think. . . You might as well give up. But if you really wish to fight I'll help since you'll need it. . . ",
@@ -107,5 +108,11 @@ module.exports = {
             lose: "Ha. Ha. Ha. . . Ha. . Alone again. . .",
             slavery: "I can't say I'm suprised you ingrate.",
         }
-    }
+    },
+      updateScore: function (score){
+        $.ajax({
+            method: "PUT",
+            url: "/api/scores",
+            data: score
+        });
 };
