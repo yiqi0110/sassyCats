@@ -1,4 +1,8 @@
 
+FB.getLoginStatus(function(response) {
+  statusChangeCallback(response);
+});
+
 
 
   // initialize Account Kit with CSRF protection
