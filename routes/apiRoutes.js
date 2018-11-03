@@ -18,6 +18,12 @@ module.exports = function (app) {
     });
   })
 
+    app.get("/api/lessplanets", function (req, res) {
+    db.lessPlanets.findAll({}).then(function (result) {
+      res.json(result);
+    });
+  });
+
   // Get all users and scores
   app.get("/api/scores", function (req, res) {
     db.Scores.findAll({}).then(function (dbScores) {
