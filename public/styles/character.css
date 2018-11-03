@@ -57,13 +57,9 @@ h1 {
     text-align: center;
     line-height: 2em;
 }
-.facebook {
-    text-align: center;
-}
 
-#facebookBtn{
-    background-color: rgb(69, 69, 170);
-   
+.fb-login-button{
+    text-align: center;
 }
 
 i{

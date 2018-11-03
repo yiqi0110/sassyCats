@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "01fiREfiGhTer!10",
+    "password": "password",
     "database": "sassycatDB",
     "host": "localhost",
     "dialect": "mysql",
@@ -23,7 +23,15 @@
     "username": "g6m6ddo389paxhp7",
     "password": "s3lmodo95cjzo069",
     "database": "sassycatDB",
-    "host": "s02pyosv8y20mln1"
-    
+    "host": "s02pyosv8y20mln1",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 300000,
+      "aquire": 300000
+    },
+    "define": {
+        "timestamps": false
+    }
   }
 }

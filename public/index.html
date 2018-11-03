@@ -24,7 +24,7 @@
         <br>
         <div class="music">
             <audio id="myAudio">
-                <source src="../public/audio/music.mp3" type="audio/mpeg">
+                <source src="audio/music.mp3" type="audio/mpeg">
             </audio>
             <p>Click the buttons to play or pause the audio.</p>
             <button class="btn music-btn" onclick="playAudio()" type="button">Play Audio</button>
@@ -34,7 +34,20 @@
 </body>
 
 
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+
 <script>
+    $.getJSON("js/planets.json", function (data) {
+        console.log(data[Math.floor(Math.random() * 1319)]);
+
+    });
+
     var x = document.getElementById("myAudio");
 
     function playAudio() {
@@ -45,12 +58,5 @@
         x.pause();
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-<script src="js/index.js"></script>
 
 </html>

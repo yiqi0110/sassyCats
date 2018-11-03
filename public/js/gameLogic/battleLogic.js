@@ -115,5 +115,11 @@ module.exports = {
             url: "/api/scores",
             data: score
         });
+<<<<<<< HEAD:gameLogic/battleLogic.js
     }
 };
+=======
+
+}};
+
+>>>>>>> master:public/js/gameLogic/battleLogic.js
