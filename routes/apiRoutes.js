@@ -1,28 +1,21 @@
 var db = require("../models");
-var Sequelize = require("../models").sequelize;
 
 module.exports = function (app) {
   // Get all planets
-  app.get("/api/planets", function (req, res) {
-    db.Planets.findAll({}).then(function (dbPlanets) {
-      res.json(dbPlanets);
-    });
-  });
+  // app.get("/api/planets", function (req, res) {
+  //   db.Planets.findAll({}).then(function (dbPlanets) {
+  //     res.json(dbPlanets);
+  //   });
+  // });
 
-  app.get("/api/randomplanet", function (req, res) {
-    db.Planets.findOne({
-      order: Sequelize.literal('rand()')
-    }).then(function (dbPlanets) {
-      res.json(dbPlanets);
-      return res.end();
-    });
-  })
-
-    app.get("/api/lessplanets", function (req, res) {
-    db.lessPlanets.findAll({}).then(function (result) {
-      res.json(result);
-    });
-  });
+  // app.get("/api/randomplanet", function (req, res) {
+  //   db.Planets.findOne({
+  //     order: Sequelize.literal('rand()')
+  //   }).then(function (dbPlanets) {
+  //     res.json(dbPlanets);
+  //     return res.end();
+  //   });
+  // })
 
   // Get all users and scores
   app.get("/api/scores", function (req, res) {
