@@ -5,6 +5,11 @@ $(document).on("click", "#blastOff", function (e) {
     console.log(user);
 });
 
+$(document).ready(function(e){
+    e.preventDefault;
+    console.log(user);
+})
+
 
 function Player(userName, avatar, score, attk, def, hp, level) {
     this.userName = userName,
