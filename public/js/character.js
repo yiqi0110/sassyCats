@@ -1,8 +1,7 @@
-
-
 FB.getLoginStatus(function (response) {
   statusChangeCallback(response);
 });
+
 
 // initialize Account Kit with CSRF protection
 AccountKit_OnInteractive = function () {
@@ -74,5 +73,3 @@ window.fbAsyncInit = function () {
     'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=501156213700747&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-
