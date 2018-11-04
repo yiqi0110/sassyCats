@@ -41,4 +41,12 @@ $(document).ready(function () {
         location.href = "/ship";
     });
 
+    $(document).on("click", "#conquer", function () {
+        location.href = "/planet";
+    });
+
+    $(document).on("click", "#wuss", function () {
+        location.href = "/chance";
+    });
+
 })
