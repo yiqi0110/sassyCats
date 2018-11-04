@@ -70,3 +70,8 @@ ol {
     margin-left: 2em;
     margin-bottom: 2rem;
 }
+
+#facebook{
+    display: block;
+    text-align: center;
+}
