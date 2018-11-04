@@ -25,7 +25,7 @@ var battleText = {
 };
 
 var randomPlanet;
-var Player;
+var Player = sessionStorage.getItem("player");
 
 function getPlanet() {
     $.get("/api/planets", function (data) {
@@ -77,6 +77,7 @@ function planetVSplayer(Player, planet) {
         $("#doBetter").text(battleText.startBattle.tooBig);
         // this.battle(turns, Player, planet);
     }
+    console.log(Player)
     console.log(planet)
 };
 
