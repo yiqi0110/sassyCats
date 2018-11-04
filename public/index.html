@@ -43,17 +43,11 @@
 <script src="js/index.js"></script>
 
 <script>
-    function randomPlanet() {
-        $.get("/api/randomplanet/", function (data) {
-            if (data) {
-                console.log(data);
-            } else {
-                console.log("nope");
-            }
-        })
-    };
+    $.getJSON("js/planets.json", function (data) {
+        console.log(data[Math.floor(Math.random() * 1319)]);
 
-    randomPlanet();
+    });
+
     var x = document.getElementById("myAudio");
 
     function playAudio() {
