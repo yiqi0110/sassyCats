@@ -40,31 +40,31 @@
                     <div class="row col-md-12">
                         <div class="form-check">
                             <label class="active">
-                                <input type="radio" name="char" id="char1" checked="">
+                                <input type="radio" name="char" id="char1" value="char1">
                                 <img class="charSelectImg" src="./images/catChar.png">
                             </label>
                         </div>
                         <div class="form-check">
                             <label>
-                                <input type="radio" name="char" id="char2">
+                                <input type="radio" name="char" id="char2" value="char2">
                                 <img class="charSelectImg" src="./images/catChar1.png">
                             </label>
                         </div>
                         <div class="form-check">
                             <label>
-                                <input type="radio" name="char" id="char3">
+                                <input type="radio" name="char" id="char3" value="char3">
                                 <img class="charSelectImg" src="./images/catChar2.png">
                             </label>
                         </div>
                         <div class="form-check">
                             <label>
-                                <input type="radio" name="char" id="char4">
+                                <input type="radio" name="char" id="char4" value="char4">
                                 <img class="charSelectImg" src="./images/catChar3.png">
                             </label>
                         </div>
                         <div class="form-check">
                             <label>
-                                <input type="radio" name="char" id="char5">
+                                <input type="radio" name="char" id="char5" value="char5">
                                 <img class="charSelectImg" src="./images/catChar4.png">
                             </label>
                         </div>
@@ -105,30 +105,29 @@
 </body>
 
 <script>
-    //facebook log in function
-    window.fbAsyncInit = function () {
-        FB.init({
+        window.fbAsyncInit = function () {
+          FB.init({
             appId: '501156213700747',
             cookie: true,
             xfbml: true,
             version: 'v3.2'
-        });
-
-        FB.AppEvents.logPageView();
-
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src =
+          });
+        
+          FB.AppEvents.logPageView();
+        
+        };
+        
+        (function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src =
             'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=501156213700747&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        
+        </script>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -137,5 +136,8 @@
     crossorigin="anonymous"></script>
 <script src="js/index.js"></script>
 <script src="js/character.js"></script>
+<script src="js/gameLogic/playerLogic.js"></script>
+
+
 
 </html>
