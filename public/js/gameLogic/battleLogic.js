@@ -61,26 +61,23 @@ function planetVSplayer(player, planet) {
     if (planet.orbital_period >= 25) {
         turns = 3;
         $("#doBetter").text(battleText.startBattle.tooSmall);
-        this.battle(turns, player, planet);
     }
     // planet is small 6 TURNS
     else if (planet.orbital_period >= 75) {
         turns = 6;
         $("#doBetter").text(battleText.startBattle.tooSmall);
-        this.battle(turns, player, planet);
     }
     // planet is medium 9 TURNS
     else if (planet.orbital_period >= 200) {
         turns = 9;
         $("#doBetter").text(battleText.startBattle.justRight);
-        this.battle(turns, player, planet);
     }
     // planet is large 12 TURNS
     else {
         turns = 12;
         $("#doBetter").text(battleText.startBattle.tooBig);
-        this.battle(turns, player, planet);
     }
+    this.battle(turns, player, planet);
     console.log(player)
     console.log(planet)
 };
@@ -102,38 +99,40 @@ function battle(turns, player, planet) {
     };
     $("#planetLeft").text(turns + "3");
 
-    $("#attack").click(function(){
+    $("#attack").click(function () {
         // console.log(this.inBattle.attackHit);
         console.log("You insult me with that measley attempt at a hit. . . You dealed " + player.attk + " points of attack.");
         planet.hp -= player.attk
         console.log(planet.name + "'s new health is " + planet.hp);
+        planetsTurn[Math.floor(Math.random() * 3)]();
     })
-    $("#charge").click(function(){
+    $("#charge").click(function () {
         // console.log(this.inBattle.chargeHit);
         player.attk = player.attk * 2;
         console.log("You next attack damage will be " + player.attk + ". Like that'll be enough hahahah. . . ");
+        planetsTurn[Math.floor(Math.random() * 3)]();
     })
-    $("#block").click(function(){
+    $("#block").click(function () {
         // console.log(this.inBattle.block);
         player.def = player.def * 3;
         console.log("You're only lucky that you're using me as a sheild. Or else you'd be dead.");
+        planetsTurn[Math.floor(Math.random() * 3)]();
     })
 
-    var planetsTurn = {
-
-        1: function () /*(moves.attack) */ {
+    var planetsTurn = [
+        function planetAttack() {
             player.hp = planet.attk - player.hp;
             console.log("ACK!!! Why did you allow them to damage me!? Your remaining health is " + player.hp + ".");
         },
-        2: function () /*(moves.charge) */ {
+        function planetCharge() {
             planet.attk = planet.attk * 2;
             console.log("Wait. . . Why did they stop their attack. . . Their probably charging up for their next attack, not that I think you'll be able to do anything about it. Ha.");
         },
-        3: function () /*(moves.block) */ {
+        function planetBlock() {
             planet.def = planet.def * 3;
             console.log("Wait? There not doing anything? Figure out what there doing you hooligan!");
         }
-    };
+    ];
 };
 
 function updateScore(score) {
