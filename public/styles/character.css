@@ -65,3 +65,8 @@ i{
 .fb-login-button{
     text-align: center !important;
 }
+
+#facebook{
+    display: block;
+    text-align: center;
+}
