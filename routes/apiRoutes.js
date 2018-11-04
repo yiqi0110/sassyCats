@@ -2,11 +2,11 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Get all planets
-  // app.get("/api/planets", function (req, res) {
-  //   db.Planets.findAll({}).then(function (dbPlanets) {
-  //     res.json(dbPlanets);
-  //   });
-  // });
+  app.get("/api/planets", function (req, res) {
+    db.Planets.findAll({}).then(function (dbPlanets) {
+      res.json(dbPlanets);
+    });
+  });
 
   // app.get("/api/randomplanet", function (req, res) {
   //   db.Planets.findOne({

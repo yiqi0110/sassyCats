@@ -14,16 +14,16 @@
 <body>
 
     <div class="container">
-        <div id="endingJumbo" class="jumbotron">
-            <h1 id="gameEnd">You Died!</h1>
-            <h3 class="mt-5">Score: <span id="userScore">12 (because you suck)</span></h3>
+
+        <div class="jumbotron" id="gameEnd">
+            <h1 id="gameEndResult">You Probably died</h1>
+            <h4 id="gameEndMessage">As expected, but good job living up to expecations</h4>
+            <h3 class="mt-5">Score: <span id="userScore">0</span></h3>
+
             <h3 class="mt-5">High Scores:</h3>
-            <ul id="highScores">
-                <li >Matt: 20,315</li>
-                <li>Trevor: 17,635</li>
-                <li>Bryan : 16,945</li>
-                <li>Tim: 13,785</li>
-            </ul>
+            <ol id="highScores">
+                <li>Sassy Cat: 31,415</li>
+            </ol>
         </div>
         <button class="btn" id="newGame">New Game</button>
         <button class="btn" id="replay">Retry this Game</button>

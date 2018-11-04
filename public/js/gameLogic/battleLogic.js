@@ -1,5 +1,6 @@
 // get planet
 // get player
+
 var battleText = {
     startBattle: {
         tooBig: "What?! You wish to fight this planet?! Your skills are not as great as you think. . . You might as well give up. But if you really wish to fight I'll help since you'll need it. . . ",
@@ -23,13 +24,17 @@ var battleText = {
     }
 };
 
-$(document).ready(function(){
-    $("#doBetter").text(battleText.startBattle.justRight);
-    $("#planetLeft").text(7);
-})
+var randomPlanet;
+var Player;
+
+function getPlanet() {
+    $.get("/api/planets", function (data) {
+        randomPlanet = data[Math.floor(Math.random() * 3827)];
+        planetVSplayer(Player, randomPlanet)
+    });
+};
 
 // takes in Player info and planet data is taking it
-
 
 function planetVSplayer(Player, planet) {
     // for each turn the player has 3 options of attack, "attack", "charge"(this will give the player a multipier for their attack), and "block"
@@ -39,8 +44,8 @@ function planetVSplayer(Player, planet) {
         def: 0,
         hp: 0,
         level: 0,
-        name: "",
-        orbital_period: 0
+        name: planet.planet_name,
+        orbital_period: planet.orbital_period
     }; // these will be effected by the players level at each battle
     var Player = {
         attk: 0,
@@ -52,26 +57,27 @@ function planetVSplayer(Player, planet) {
     if (planet.orbital_period >= 25) {
         turns = 3;
         $("#doBetter").text(battleText.startBattle.tooSmall);
-        this.battle(turns, Player, planet);
+        // this.battle(turns, Player, planet);
     }
     // planet is small 6 TURNS
     else if (planet.orbital_period >= 75) {
         turns = 6;
         $("#doBetter").text(battleText.startBattle.tooSmall);
-        this.battle(turns, Player, planet);
+        // this.battle(turns, Player, planet);
     }
     // planet is medium 9 TURNS
     else if (planet.orbital_period >= 200) {
         turns = 9;
         $("#doBetter").text(battleText.startBattle.justRight);
-        this.battle(turns, Player, planet);
+        // this.battle(turns, Player, planet);
     }
     // planet is large 12 TURNS
     else {
         turns = 12;
         $("#doBetter").text(battleText.startBattle.tooBig);
-        this.battle(turns, Player, planet);
+        // this.battle(turns, Player, planet);
     }
+    console.log(planet)
 };
 
 function battle(turns, Player, planet) {
@@ -90,7 +96,7 @@ function battle(turns, Player, planet) {
         }
     };
     $("#planetLeft").text(turns + "3");
-    if (PlayersTurn) {
+
         if (moves.attack) {
             console.log(this.inBattle.attackHit);
             console.log("You insult me with that measley attempt at a hit. . . You dealed " + Player.attk + " points of attack.");
@@ -107,15 +113,18 @@ function battle(turns, Player, planet) {
         } else {
             console.log(this.startBattle.giveUp);
         }
-    };
-    if (planetsTurn) {
-        if (moves.attack) {
+    
+    var planetsTurn = {
+
+        1: function () /*(moves.attack) */ {
             Player.hp = planet.attk - Player.hp;
             console.log("ACK!!! Why did you allow them to damage me!? Your remaining health is " + Player.hp + ".");
-        } else if (moves.charge) {
+        },
+        2: function () /*(moves.charge) */ {
             planet.attk = planet.attk * 2;
             console.log("Wait. . . Why did they stop their attack. . . Their probably charging up for their next attack, not that I think you'll be able to do anything about it. Ha.");
-        } else if (moves.block) {
+        },
+        3: function () /*(moves.block) */ {
             planet.def = planet.def * 3;
             console.log("Wait? There not doing anything? Figure out what there doing you hooligan!");
         }
@@ -129,3 +138,9 @@ function updateScore(score) {
         data: score
     });
 };
+
+$(document).ready(function () {
+    $("#doBetter").text(battleText.startBattle.justRight);
+    $("#planetLeft").text(7);
+    getPlanet();
+})
