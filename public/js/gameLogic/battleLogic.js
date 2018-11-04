@@ -44,7 +44,7 @@ function planetVSplayer(player, planet) {
         attk: 0,
         def: 0,
         hp: 0,
-        level: 0,
+        level: player.level,
         name: planet.planet_name,
         orbital_period: planet.orbital_period
     }; // these will be effected by the players level at each battle
@@ -61,25 +61,25 @@ function planetVSplayer(player, planet) {
     if (planet.orbital_period >= 25) {
         turns = 3;
         $("#doBetter").text(battleText.startBattle.tooSmall);
-        // this.battle(turns, player, planet);
+        this.battle(turns, player, planet);
     }
     // planet is small 6 TURNS
     else if (planet.orbital_period >= 75) {
         turns = 6;
         $("#doBetter").text(battleText.startBattle.tooSmall);
-        // this.battle(turns, player, planet);
+        this.battle(turns, player, planet);
     }
     // planet is medium 9 TURNS
     else if (planet.orbital_period >= 200) {
         turns = 9;
         $("#doBetter").text(battleText.startBattle.justRight);
-        // this.battle(turns, player, planet);
+        this.battle(turns, player, planet);
     }
     // planet is large 12 TURNS
     else {
         turns = 12;
         $("#doBetter").text(battleText.startBattle.tooBig);
-        // this.battle(turns, player, planet);
+        this.battle(turns, player, planet);
     }
     console.log(player)
     console.log(planet)
@@ -102,22 +102,22 @@ function battle(turns, player, planet) {
     };
     $("#planetLeft").text(turns + "3");
 
-    if (moves.attack) {
-        console.log(this.inBattle.attackHit);
+    $("#attack").click(function(){
+        // console.log(this.inBattle.attackHit);
         console.log("You insult me with that measley attempt at a hit. . . You dealed " + player.attk + " points of attack.");
-        planet.hp = player.attk - planet.hp;
+        planet.hp -= player.attk
         console.log(planet.name + "'s new health is " + planet.hp);
-    } else if (moves.charge) {
-        console.log(this.inBattle.chargeHit);
+    })
+    $("#charge").click(function(){
+        // console.log(this.inBattle.chargeHit);
         player.attk = player.attk * 2;
         console.log("You next attack damage will be " + player.attk + ". Like that'll be enough hahahah. . . ");
-    } else if (moves.block) {
-        console.log(this.inBattle.block);
+    })
+    $("#block").click(function(){
+        // console.log(this.inBattle.block);
         player.def = player.def * 3;
         console.log("You're only lucky that you're using me as a sheild. Or else you'd be dead.");
-    } else {
-        console.log(this.startBattle.giveUp);
-    }
+    })
 
     var planetsTurn = {
 
