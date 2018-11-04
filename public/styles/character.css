@@ -58,14 +58,10 @@ h1 {
     line-height: 2em;
 }
 
-.fb-login-button{
-    text-align: center;
-}
-
 i{
     font-size: 30px;
 }
 
-.fb_iframe_widget {
-    display: none;
+.fb-login-button{
+    text-align: center !important;
 }
