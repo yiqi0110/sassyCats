@@ -26,10 +26,18 @@ var battleText = {
 $(document).ready(function(){
     $("#doBetter").text(battleText.startBattle.justRight);
     $("#planetLeft").text(7);
+    getPlanet();
 })
 
 // takes in Player info and planet data is taking it
 
+var randomPlanet;
+
+function getPlanet(){
+    $.get("/api/planets", function(data){
+        console.log(data[Math.floor(Math.random() * 3827)]);
+    })
+}
 
 function planetVSplayer(Player, planet) {
     // for each turn the player has 3 options of attack, "attack", "charge"(this will give the player a multipier for their attack), and "block"
