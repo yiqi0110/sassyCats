@@ -11,13 +11,20 @@ $(document).ready(function () {
     $(".jumbotron").css("background-image", "url(images/" + background[i] + ".png)");
 
     // Amount of rolls to conquer planet
-    var time = 9;
+    var planetSize = [12];
+    var time = planetSize;
     $("#planetLeft").text(time + 1);
     var def = 32;
     $("#planetDef").text(def);
+    var score = 1000;
+    var totalScore = [0];
 
     // Roll again button
     $(document).on("click", "#attack", function () {
+
+        function add(a, b) {
+            return parseFloat(a) + parseFloat(b);
+        }
 
         if (time >= 0) {
 
@@ -37,12 +44,30 @@ $(document).ready(function () {
                     $("#outcomeModal").find(".modal-title").text("Victory!")
                     $("#outcomeModal").find("#outcome").text("conquerd the planet and enslaved the inhabitants");
                     $("#outcomeModal").modal("toggle");
+                    totalScore.push(score);
+                    totalScore = totalScore.reduce(add);
+                    console.log("Total score: " + totalScore);
                 }
                 // User loses
             } else if (user === comp) {
                 $("#winlose").text("tied");
             } else {
                 $("#winlose").text("lost");
+            }
+
+            // Update score
+            if (planetSize[0] === 12) {
+                score = (score - 83.33 + 3.14).toFixed(2);
+                console.log("Score: " + score);
+            } else if (planetSize[0] === 9) {
+                score = (score - 111.11 + 3.14).toFixed(2);
+                console.log("Score: " + score);
+            } else if (planetSize[0] === 6) {
+                score = (score - 166.66 + 3.14).toFixed(2);
+                console.log("Score: " + score);
+            } else if (planetSize[0] === 3) {
+                score = (score - 333.33 + 3.14).toFixed(2);
+                console.log("Score: " + score);
             }
 
             // Update time left
@@ -55,6 +80,9 @@ $(document).ready(function () {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");
+            totalScore.push(score);
+            totalScore = totalScore.reduce(add);
+            console.log(totalScore);
         }
 
     });
@@ -79,7 +107,7 @@ $(document).ready(function () {
     $(document).on("click", "#die", function () {
         location.href = "/ending";
     });
-    
+
     $(document).on("click", ".escape", function () {
         location.href = "/ship";
     });
