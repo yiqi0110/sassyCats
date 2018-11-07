@@ -58,23 +58,27 @@ function planetVSplayer(player, planet) {
         level: player.level
     }; // these will be effected by the players level at each battle
     // planet is extra small 3 TURNS
-    if (planet.orbital_period >= 25) {
+    if (planet.orbital_period <= 25) {
         turns = 3;
+        planet.hp = 50;
         $("#doBetter").text(battleText.startBattle.tooSmall);
     }
     // planet is small 6 TURNS
-    else if (planet.orbital_period >= 75) {
+    else if (planet.orbital_period <= 75) {
         turns = 6;
+        planet.hp = 100;
         $("#doBetter").text(battleText.startBattle.tooSmall);
     }
     // planet is medium 9 TURNS
-    else if (planet.orbital_period >= 200) {
+    else if (planet.orbital_period <= 200) {
         turns = 9;
+        planet.hp = 150;
         $("#doBetter").text(battleText.startBattle.justRight);
     }
     // planet is large 12 TURNS
     else {
         turns = 12;
+        planet.hp = 200;
         $("#doBetter").text(battleText.startBattle.tooBig);
     }
     this.battle(turns, player, planet);
