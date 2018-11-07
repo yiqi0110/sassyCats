@@ -42,7 +42,6 @@ function planetVSplayer(player, planet) {
     var turns = 0; // 3 for xs, 6 for sm, 9 for md, 12 for lg  // player and planet are both given the same number of turns
     var planet = {
         attk: 100,
-        def: 0,
         hp: 0,
         level: player.level,
         name: planet.planet_name,
@@ -53,7 +52,6 @@ function planetVSplayer(player, planet) {
         avatar: player.avatar,
         score: player.score,
         attk: player.attk,
-        def: player.def,
         hp: player.hp,
         level: player.level
     }; // these will be effected by the players level at each battle
@@ -102,6 +100,7 @@ function battle(turns, player, planet) {
     //     }
     // };
     $("#planetLeft").text(turns);
+    $("#planet-health").html(planet.hp);
 
     $("#attack").click(function () {
         // console.log(this.inBattle.attackHit);
@@ -124,9 +123,9 @@ function battle(turns, player, planet) {
         checkOutcome();
     });
 
-    $("#block").click(function () {
+    $("#heal").click(function () {
         // console.log(this.inBattle.block);
-        player.def *= 3;
+        player.hp *= 2;
         $("#player-move").text("You're only lucky that you're using me as a sheild. Or else you'd be dead.");
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
@@ -143,25 +142,38 @@ function battle(turns, player, planet) {
             planet.attk *= 2;
             $("#planet-move").text("Wait. . . Why did they stop their attack. . . Their probably charging up for their next attack, not that I think you'll be able to do anything about it. Ha.");
         },
-        function planetBlock() {
-            planet.def *= 3;
+        function planetHeal() {
+            planet.hp *= 2;
             $("#planet-move").text("Wait? There not doing anything? Figure out what there doing you hooligan!");
+            turns++
         }
     ];
 
     function checkOutcome() {
+        $("#planet-health").text(planet.hp);
         if (planet.hp <= 0) {
             $("#outcomeModal").find(".modal-title").text("Victory!");
             $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
             $("#outcomeModal").modal("toggle");
+            player.hp = 500;
+            player.attk = 10;
+            player.level++;
+            sessionStorage.setItem("player", JSON.stringify(player))
+
         } else if (player.hp <= 0) {
             $("#outcomeModal").find(".modal-title").text("Failure!")
             $("#outcome-body").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
             $("#outcomeModal").modal("toggle");
+            sessionStorage.setItem("player", JSON.stringify(player))
+
         } else if (turns === 0) {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");
+            player.hp = 500;
+            player.attk = 10;
+            player.level++;
+            sessionStorage.setItem("player", JSON.stringify(player))
         };
     };
 };
