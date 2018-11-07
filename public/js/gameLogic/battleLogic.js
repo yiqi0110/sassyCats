@@ -202,7 +202,7 @@ function battle(turns, player, planet) {
             $("#prisonModal").find("#prisonBody").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").find("#fight").hide();
-            $("#outcomeModal").modal("toggle");
+            $("#prisonModal").modal("toggle");
             sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
