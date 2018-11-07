@@ -154,6 +154,9 @@ function battle(turns, player, planet) {
         if (planet.hp <= 0) {
             $("#outcomeModal").modal("toggle");
             $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
+            player.hp = 500;
+            player.attk = 10;
+            player.level++;
             sessionStorage.setItem("player", JSON.stringify(player))
         } else if (player.hp <= 0) {
             $("#outcomeModal").modal("toggle");
@@ -163,6 +166,9 @@ function battle(turns, player, planet) {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");
+            player.hp = 500;
+            player.attk = 10;
+            player.level++;
             sessionStorage.setItem("player", JSON.stringify(player))
         };
     };
