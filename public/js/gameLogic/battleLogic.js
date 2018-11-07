@@ -153,7 +153,7 @@ function battle(turns, player, planet) {
         $("#planet-health").text(planet.hp);
         if (planet.hp <= 0) {
             $("#outcomeModal").find(".modal-title").text("Victory!");
-            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
+            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + " and enslaved the inhabitants!");
             $("#outcomeModal").modal("toggle");
             player.hp = 500;
             player.attk = 10;
@@ -161,10 +161,12 @@ function battle(turns, player, planet) {
             sessionStorage.setItem("player", JSON.stringify(player))
 
         } else if (player.hp <= 0) {
-            $("#outcomeModal").find(".modal-title").text("Failure!")
-            $("#outcome-body").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
+            $("#prisonModal").find(".modal-title").text("Failure!");
+            $("#prisonModal").find("#prisonBody").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
+            $("#prisonModal").find(".escape").hide();
+            $("#prisonModal").find("#fight").hide();
             $("#outcomeModal").modal("toggle");
-            sessionStorage.setItem("player", JSON.stringify(player))
+            sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
