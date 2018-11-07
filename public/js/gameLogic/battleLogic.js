@@ -58,23 +58,27 @@ function planetVSplayer(player, planet) {
         level: player.level
     }; // these will be effected by the players level at each battle
     // planet is extra small 3 TURNS
-    if (planet.orbital_period >= 25) {
+    if (planet.orbital_period <= 25) {
         turns = 3;
+        planet.hp = 40;
         $("#doBetter").text(battleText.startBattle.tooSmall);
     }
     // planet is small 6 TURNS
-    else if (planet.orbital_period >= 75) {
+    else if (planet.orbital_period <= 75) {
         turns = 6;
+        planet.hp = 100;
         $("#doBetter").text(battleText.startBattle.tooSmall);
     }
     // planet is medium 9 TURNS
-    else if (planet.orbital_period >= 200) {
+    else if (planet.orbital_period <= 200) {
         turns = 9;
+        planet.hp = 150;
         $("#doBetter").text(battleText.startBattle.justRight);
     }
     // planet is large 12 TURNS
     else {
         turns = 12;
+        planet.hp = 200;
         $("#doBetter").text(battleText.startBattle.tooBig);
     }
     this.battle(turns, player, planet);
@@ -105,19 +109,30 @@ function battle(turns, player, planet) {
         planet.hp -= player.attk
         console.log(planet.name + "'s new health is " + planet.hp);
         planetsTurn[Math.floor(Math.random() * 3)]();
-    })
+        turns--;
+        $("#planetLeft").text(turns);
+        checkOutcome();
+    });
+
     $("#charge").click(function () {
         // console.log(this.inBattle.chargeHit);
         player.attk *= 2;
         $("#player-move").text("You next attack damage will be " + player.attk + ". Like that'll be enough hahahah. . . ");
         planetsTurn[Math.floor(Math.random() * 3)]();
-    })
+        turns--;
+        $("#planetLeft").text(turns);
+        checkOutcome();
+    });
+
     $("#block").click(function () {
         // console.log(this.inBattle.block);
         player.def *= 3;
         $("#player-move").text("You're only lucky that you're using me as a sheild. Or else you'd be dead.");
         planetsTurn[Math.floor(Math.random() * 3)]();
-    })
+        turns--;
+        $("#planetLeft").text(turns);
+        checkOutcome();
+    });
 
     var planetsTurn = [
         function planetAttack() {
@@ -133,6 +148,20 @@ function battle(turns, player, planet) {
             $("#planet-move").text("Wait? There not doing anything? Figure out what there doing you hooligan!");
         }
     ];
+
+    function checkOutcome() {
+        if (planet.hp <= 0) {
+            $("#outcomeModal").modal("toggle");
+            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!")
+        } else if (player.hp <= 0) {
+            $("#outcomeModal").modal("toggle");
+            $("#outcome-body").text("You Died!")
+        } else if (turns === 0) {
+            $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
+            $("#prisonModal").find(".escape").hide();
+            $("#prisonModal").modal("toggle");
+        };
+    };
 };
 
 function updateScore(score) {
@@ -145,4 +174,4 @@ function updateScore(score) {
 
 $(document).ready(function () {
     getPlanet();
-})
+});
