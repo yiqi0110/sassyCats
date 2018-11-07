@@ -14,3 +14,6 @@ function Player(userName, avatar, score, attk, def, hp, level) {
         this.hp = hp,
         this.level = level
 };
+
+$("#charName").text(user.userName);
+$("#charImage").attr("src", user.avatar);
