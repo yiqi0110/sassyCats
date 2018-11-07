@@ -111,7 +111,9 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
-    })
+        checkLoss();
+    });
+
     $("#charge").click(function () {
         // console.log(this.inBattle.chargeHit);
         player.attk *= 2;
@@ -119,7 +121,9 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
-    })
+        checkLoss();
+    });
+
     $("#block").click(function () {
         // console.log(this.inBattle.block);
         player.def *= 3;
@@ -127,7 +131,8 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
-    })
+        checkLoss();
+    });
 
     var planetsTurn = [
         function planetAttack() {
@@ -143,6 +148,15 @@ function battle(turns, player, planet) {
             $("#planet-move").text("Wait? There not doing anything? Figure out what there doing you hooligan!");
         }
     ];
+
+    function checkLoss() {
+        if (turns === 0 || player.hp === 0) {
+            $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
+            $("#prisonModal").find(".escape").hide();
+            $("#prisonModal").modal("toggle");
+        };
+    };
+
 };
 
 function updateScore(score) {
@@ -155,4 +169,4 @@ function updateScore(score) {
 
 $(document).ready(function () {
     getPlanet();
-})
+});
