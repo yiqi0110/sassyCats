@@ -208,6 +208,7 @@ function battle(turns, player, planet) {
             sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
+            $("#prisonModal").find(".modal-title").text("Failure!");
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");
