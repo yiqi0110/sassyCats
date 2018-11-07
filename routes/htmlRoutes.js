@@ -20,12 +20,20 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/planet.html"));
   });
 
-  app.get("/ending", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/ending.html"));
+  app.get("/death", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/death.html"));
   });
 
-  app.get("/chance", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/chance.html"));
+  app.get("/win", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/win.html"));
+  });
+
+  app.get("/enslaved", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/enslaved.html"));
+  });
+  
+  app.get("/wuss", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/wuss.html"));
   });
   
   // Load example page and pass in an example by id
