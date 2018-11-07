@@ -46,7 +46,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#wuss", function () {
-        location.href = "/chance";
+        location.href = "/ending";
     });
 
 })

@@ -185,8 +185,10 @@ function battle(turns, player, planet) {
             $("#outcomeModal").modal("toggle");
 
         } else if (player.hp <= 0) {
-            $("#outcomeModal").find(".modal-title").text("Failure!");
-            $("#outcome-body").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
+            $("#prisonModal").find(".modal-title").text("Failure!");
+            $("#prisonModal").find("#prisonBody").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
+            $("#prisonModal").find(".escape").hide();
+            $("#prisonModal").find("#fight").hide();
             $("#outcomeModal").modal("toggle");
             sessionStorage.setItem("player", JSON.stringify(player));
 
