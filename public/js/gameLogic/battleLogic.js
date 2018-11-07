@@ -111,6 +111,8 @@ function battle(turns, player, planet) {
     $("#compRoll").text(planet.attk);
     $("#userRoll").text(player.attk);
 
+    var roundScore = 1000;
+
     $("#attack").click(function () {
         // console.log(this.inBattle.attackHit);
         $("#player-move").text("You insult me with that measley attempt at a hit. . . You dealed " + player.attk + " points of attack.");
@@ -119,6 +121,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
+        updateScore();
         checkOutcome();
     });
 
@@ -129,6 +132,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
+        updateScore();
         checkOutcome();
     });
 
@@ -139,6 +143,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
+        updateScore();
         checkOutcome();
     });
 
@@ -158,25 +163,47 @@ function battle(turns, player, planet) {
         }
     ];
 
+    function updateScore() {
+        if (planet.orbital_period > 200) {
+            roundScore = (roundScore - 83.33 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        } else if (planet.orbital_period <= 200) {
+            roundScore = (roundScore - 111.11 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        } else if (planet.orbital_period <= 75) {
+            roundScore = (roundScore - 166.66 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        } else if (planet.orbital_period <= 25) {
+            roundScore = (roundScore - 333.33 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        }
+    }
+
     function checkOutcome() {
         $("#planet-health").text(planet.hp);
         $("#userDef").text(player.hp);
         $("#compRoll").text(planet.attk);
         $("#userRoll").text(player.attk);
         if (planet.hp <= 0) {
-            $("#outcomeModal").find(".modal-title").text("Victory!");
-            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
-            $("#outcomeModal").modal("toggle");
             player.hp = 500;
             player.attk = 10;
             player.level++;
-            sessionStorage.setItem("player", JSON.stringify(player))
+            player.score += roundScore;
+            sessionStorage.setItem("player", JSON.stringify(player));
+            if (player.level === 10) {
+                location.href = "/win";
+            };
+            $("#outcomeModal").find(".modal-title").text("Victory!");
+            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
+            $("#outcomeModal").modal("toggle");
 
         } else if (player.hp <= 0) {
-            $("#outcomeModal").find(".modal-title").text("Failure!")
-            $("#outcome-body").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
+            $("#prisonModal").find(".modal-title").text("Failure!");
+            $("#prisonModal").find("#prisonBody").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
+            $("#prisonModal").find(".escape").hide();
+            $("#prisonModal").find("#fight").hide();
             $("#outcomeModal").modal("toggle");
-            sessionStorage.setItem("player", JSON.stringify(player))
+            sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
@@ -184,8 +211,7 @@ function battle(turns, player, planet) {
             $("#prisonModal").modal("toggle");
             player.hp = 500;
             player.attk = 10;
-            player.level++;
-            sessionStorage.setItem("player", JSON.stringify(player))
+            sessionStorage.setItem("player", JSON.stringify(player));
         };
     };
 };
