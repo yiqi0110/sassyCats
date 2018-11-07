@@ -1,10 +1,13 @@
+$(document).ready(function () {
+    getPlanet();
+});
 // get planet
 // get player
 
 var battleText = {
     startBattle: {
         tooBig: "What?! You wish to fight this planet?! Your skills are not as great as you think. . . You might as well give up. But if you really wish to fight I'll help since you'll need it. . . ",
-        tooSmall: "Nani!!! You really wish to waste your time on this measley planet? I suppose I'll help you wipe its existance from the universe. . . I'm not saying you're that good. . . Just that your enemy is so weak.",
+        tooSmall: "What!!! You really wish to waste your time on this measley planet? I suppose I'll help you wipe its existance from the universe. . . I'm not saying you're that good. . . Just that your enemy is so weak.",
         justRight: "Hmmm. . . even though a child could conquer this planet. . . looks like you found a planet that you actually have a chance of defeating. . . Good luck, is what you thought I'd say, but nope! If you die, I'll take it as a direct insult you baffoon!",
         giveUp: "You wish to leave? You kitty-baffoon. . . If you wish to do so there's not much I can do. As long as you know the consequences."
     },
@@ -55,29 +58,32 @@ function planetVSplayer(player, planet) {
         hp: player.hp,
         level: player.level
     }; // these will be effected by the players level at each battle
+
+
+
     // planet is extra small 3 TURNS
     if (planet.orbital_period <= 25) {
         turns = 3;
         planet.hp = 40;
-        $("#doBetter").text(battleText.startBattle.tooSmall);
+        $("#player-move").text(battleText.startBattle.tooSmall);
     }
     // planet is small 6 TURNS
     else if (planet.orbital_period <= 75) {
         turns = 6;
         planet.hp = 100;
-        $("#doBetter").text(battleText.startBattle.tooSmall);
+        $("#player-move").text(battleText.startBattle.tooSmall);
     }
     // planet is medium 9 TURNS
     else if (planet.orbital_period <= 200) {
         turns = 9;
         planet.hp = 150;
-        $("#doBetter").text(battleText.startBattle.justRight);
+        $("#player-move").text(battleText.startBattle.justRight);
     }
     // planet is large 12 TURNS
     else {
         turns = 12;
         planet.hp = 200;
-        $("#doBetter").text(battleText.startBattle.tooBig);
+        $("#player-move").text(battleText.startBattle.tooBig);
     }
     this.battle(turns, player, planet);
     console.log(player)
@@ -101,6 +107,10 @@ function battle(turns, player, planet) {
     // };
     $("#planetLeft").text(turns);
     $("#planet-health").html(planet.hp);
+    $("#userDef").text(player.hp);
+    $("#compRoll").text(planet.attk);
+    $("#userRoll").text(player.attk);
+
     var roundScore = 1000;
 
     $("#attack").click(function () {
@@ -171,6 +181,9 @@ function battle(turns, player, planet) {
 
     function checkOutcome() {
         $("#planet-health").text(planet.hp);
+        $("#userDef").text(player.hp);
+        $("#compRoll").text(planet.attk);
+        $("#userRoll").text(player.attk);
         if (planet.hp <= 0) {
             player.hp = 500;
             player.attk = 10;
@@ -210,7 +223,3 @@ function updateScore(score) {
         data: score
     });
 };
-
-$(document).ready(function () {
-    getPlanet();
-});
