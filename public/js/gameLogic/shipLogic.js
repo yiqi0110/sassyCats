@@ -11,8 +11,6 @@ $(document).ready(function () {
         daysArr.push(i);
     };
     var randDay = Math.floor(Math.random() * daysArr.length) + 1;
-    console.log(daysArr);
-    $("#")
     $("#charName").text(newPlayer.userName);
     $("#charImage").attr("src", newPlayer.avatar);
     $(".statsLevel").text(newPlayer.level);
