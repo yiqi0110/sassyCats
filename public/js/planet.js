@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#die", function () {
-        location.href = "/ending";
+        location.href = "/death";
     });
 
     $(document).on("click", ".escape", function () {
