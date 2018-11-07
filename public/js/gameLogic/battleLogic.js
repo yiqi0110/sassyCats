@@ -153,14 +153,17 @@ function battle(turns, player, planet) {
         $("#planet-health").text(planet.hp);
         if (planet.hp <= 0) {
             $("#outcomeModal").modal("toggle");
-            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!")
+            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
+            sessionStorage.setItem("player", JSON.stringify(player))
         } else if (player.hp <= 0) {
             $("#outcomeModal").modal("toggle");
-            $("#outcome-body").text("You Died!")
+            $("#outcome-body").text("You Died!");
+            sessionStorage.setItem("player", JSON.stringify(player))
         } else if (turns === 0) {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");
+            sessionStorage.setItem("player", JSON.stringify(player))
         };
     };
 };
