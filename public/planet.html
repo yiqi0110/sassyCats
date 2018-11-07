@@ -26,7 +26,7 @@
                         <br>
                         <li>Planet Type: <span id="planetType">Desert</span></li>
                         <li>Planet Defense: <span id="planetDef">?</span></li>
-                        <li>Time left to conquer: <span id="planetLeft">?</span></li>
+                        <li>Turns left to conquer: <span id="planetLeft">?</span></li>
                     </div>
                     <!-- Options -->
                     <div class="col log">
@@ -42,7 +42,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col sassy">
-                            <div id="doBetter">This is where the sassy text goes!</div>
+                            <div id="player-move">Your Move</div>
+                            <div id="planet-move">Planet's Move</div>
                         </div>
                     </div>
                 </div>
@@ -72,8 +73,8 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalLabel">Modal title</h5>
                     </div>
-                    <div class="modal-body">
-                        Congratulations! You <span id="outcome"></span>!
+                    <div id="outcome-body" class="modal-body">
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary escape">Return to Ship</button>
@@ -87,7 +88,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Congratulations!</h5>
+                        <h5 class="modal-title" id="modalLabel">You Ran Out Of Turns!</h5>
                     </div>
                     <div class="modal-body"><span id="prisonBody">
                             You have no prison body.</span>
