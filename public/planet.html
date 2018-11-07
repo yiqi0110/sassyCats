@@ -24,85 +24,88 @@
                     <div class="col stats">
                         <h4>Planet Stats</h4>
                         <br>
-                        <li>Planet Type: <span id="planetType">Desert</span></li>
-                        <li>Planet Defense: <span id="planetDef">?</span></li>
-                        <li>Turns left to conquer: <span id="planetLeft">?</span></li>
+                        <li>Planet Type: <span id="planetType">#</span></li>
+                        <li>Planet Health: <span id="planet-health">#</span></li>
+                        <li>Planet defends with <span id="compRoll">#</span> damage</li>
                     </div>
                     <!-- Options -->
                     <div class="col log">
                         <h4>Attack log</h4>
                         <br>
-                        <li>You attack with <span id="userRoll">?</span> soldiers</li>
-                        <li>Planet defends with <span id="compRoll">?</span> soldiers</li>
-                        <li>You <span id="winlose">haven't fought</span> this battle</li>
+                        <li>Turns left to conquer: <span id="planetLeft">#</span></li>
+                        <li>Your Heatlh: <span id="userDef">#</span></li>
+                        <li>You attacked with <span id="userRoll">#</span> damage</li>
                     </div>
                 </div>
+            </div>
 
-                <!-- Row 2 - Feedback text -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col sassy">
-                            <div id="player-move">Your Move</div>
-                            <div id="planet-move">Planet's Move</div>
-                        </div>
+            <!-- Row 2 - Feedback text -->
+            <div class="container">
+                <div class="row">
+                    <div class="col sassy">
+                        <div id="player-move">Your Move</div>
+                        <div id="planet-move">Planet's Move</div>
                     </div>
                 </div>
+            </div>
 
 
-                <!-- Row 3 - Choices -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <button type="button" id="attack">Attack</button>
-                        </div>
-                        <div class="col">
-                            <button type="button" id="charge">Charge</button>
-                        </div>
-                        <div class="col">
-                            <button type="button" id="block">Block</button>
-                        </div>
+            <!-- Row 3 - Choices -->
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" id="attack">Attack</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" id="charge">Charge</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" id="heal">Heal</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Outcome modal - Show whether you won or lost -->
-        <div class="modal fade" id="outcomeModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Modal title</h5>
-                    </div>
-                    <div id="outcome-body" class="modal-body">
+    <!-- Outcome modal - Show whether you won or lost -->
+    <div class="modal fade" id="outcomeModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"
+        data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                </div>
+                <div id="outcome-body" class="modal-body">
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary escape">Return to Ship</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary escape">Return to Ship</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Prison modal - Get enslaved or don't-->
-        <div class="modal fade" id="prisonModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">You Ran Out Of Turns!</h5>
-                    </div>
-                    <div class="modal-body"><span id="prisonBody">
-                            You have no prison body.</span>
-                    </div>
-                    <!-- Fight button -->
-                    <div class="modal-footer">
-                        <button type="button" id="fight" class="btn btn-secondary mx-4">Fight</button>
-                        <!-- Die in Slavery -->
-                        <button type="button" id="die" class="btn btn-secondary mx-4">Die</button>
-                        <button type="button" class="btn btn-secondary escape mx-4">Return to Ship</button>
-                    </div>
+    <!-- Prison modal - Get enslaved or don't-->
+    <div class="modal fade" id="prisonModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false"
+        data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">You Ran Out Of Turns!</h5>
+                </div>
+                <div class="modal-body"><span id="prisonBody">
+                        You have no prison body.</span>
+                </div>
+                <!-- Fight button -->
+                <div class="modal-footer">
+                    <button type="button" id="fight" class="btn btn-secondary mx-4">Fight</button>
+                    <!-- Die in Slavery -->
+                    <button type="button" id="die" class="btn btn-secondary mx-4">Die</button>
+                    <button type="button" class="btn btn-secondary escape mx-4">Return to Ship</button>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 </body>
