@@ -12,7 +12,9 @@ $(document).ready(function () {
     };
     var randDay = Math.floor(Math.random() * daysArr.length) + 1;
     console.log(daysArr);
-    $(".statsName").text(newPlayer.userName);
+    $("#")
+    $("#charName").text(newPlayer.userName);
+    $("#charImage").attr("src", newPlayer.avatar);
     $(".statsLevel").text(newPlayer.level);
     $(".statsPower").text(newPlayer.score);
     var currentDay = 5034562;
