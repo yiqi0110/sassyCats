@@ -77,17 +77,17 @@ ol {
 }
 
 .death {
-    background-image: url(images/dead.png)
+    background-image: url("../images/dead.png")
 }
 
 .enslaved {
-    background-image: url(images/enslaved.png)
+    background-image: url("../images/enslaved.png")
 }
 
 .win {
-    background-image: url(images/won.png)
+    background-image: url("../images/won.png")
 }
 
 .wuss {
-    background-image: url(images/wuss.png)
+    background-image: url("../images/wuss.png")
 }
