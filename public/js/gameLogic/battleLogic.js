@@ -34,7 +34,7 @@ var newPlayer = $.parseJSON(temp);
 function getPlanet() {
     $.get("/api/planets", function (data) {
         randomPlanet = data[Math.floor(Math.random() * 3827)];
-        planetVSplayer(newPlayer, randomPlanet)
+        planetVSplayer(newPlayer, randomPlanet);
     });
 };
 
@@ -58,23 +58,25 @@ function planetVSplayer(player, planet) {
         hp: player.hp,
         level: player.level
     }; // these will be effected by the players level at each battle
-
-
-
+    
+    $("#playerName").text(player.userName);
+    $("#planetName").text(planet.name);
+    
+    
     // planet is extra small 3 TURNS
-    if (planet.orbital_period <= 25) {
+    if (planet.orbital_period <= 100) {
         turns = 3;
         planet.hp = 40;
         $("#player-move").text(battleText.startBattle.tooSmall);
     }
     // planet is small 6 TURNS
-    else if (planet.orbital_period <= 75) {
+    else if (planet.orbital_period <= 500) {
         turns = 6;
         planet.hp = 100;
         $("#player-move").text(battleText.startBattle.tooSmall);
     }
     // planet is medium 9 TURNS
-    else if (planet.orbital_period <= 200) {
+    else if (planet.orbital_period <= 1000) {
         turns = 9;
         planet.hp = 150;
         $("#player-move").text(battleText.startBattle.justRight);
@@ -164,18 +166,18 @@ function battle(turns, player, planet) {
     ];
 
     function updateScore() {
-        if (planet.orbital_period > 200) {
-            roundScore = (roundScore - 83.33 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
-        } else if (planet.orbital_period <= 200) {
-            roundScore = (roundScore - 111.11 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
-        } else if (planet.orbital_period <= 75) {
-            roundScore = (roundScore - 166.66 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
-        } else if (planet.orbital_period <= 25) {
-            roundScore = (roundScore - 333.33 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
+        if (planet.orbital_period <= 100) {
+            roundScore = (parseInt(roundScore) - 333.33 + 3.14).toFixed(2);
+            console.log("Score: " + parseInt(roundScore));
+        } else if (planet.orbital_period <= 500) {
+            roundScore = (parseInt(roundScore) - 166.66 + 3.14).toFixed(2);
+            console.log("Score: " + parseInt(roundScore));
+        } else if (planet.orbital_period <= 1000) {
+            roundScore = (parseInt(roundScore) - 111.11 + 3.14).toFixed(2);
+            console.log("Score: " + parseInt(roundScore));
+        } else if (planet.orbital_period > 1000) {
+            roundScore = (parseInt(roundScore) - 83.33 + 3.14).toFixed(2);
+            console.log("Score: " + parseInt(roundScore));
         }
     }
 
@@ -188,7 +190,7 @@ function battle(turns, player, planet) {
             player.hp = 500;
             player.attk = 10;
             player.level++;
-            player.score += roundScore;
+            player.score += parseInt(roundScore);
             sessionStorage.setItem("player", JSON.stringify(player));
             if (player.level === 10) {
                 location.href = "/win";

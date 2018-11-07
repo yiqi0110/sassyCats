@@ -6,18 +6,11 @@ var newPlayer = $.parseJSON(temp);
 
 // Function declaration ==================================================
 $(document).ready(function () {
-    var daysArr = [];
-    for (var i = 1; i < 1000; i++){
-        daysArr.push(i);
-    };
-    var randDay = Math.floor(Math.random() * daysArr.length) + 1;
     $("#charName").text(newPlayer.userName);
     $("#charImage").attr("src", newPlayer.avatar);
     $(".statsLevel").text(newPlayer.level);
     $(".statsPower").text(newPlayer.score);
-    var currentDay = 5034562;
-    var newDay = parseInt(currentDay) + (randDay + newPlayer.level);
-    $("#day").text(newDay);
+    $("#score").text(newPlayer.score);
 })
 
 $(document).on("click", "#return2game", function () {
