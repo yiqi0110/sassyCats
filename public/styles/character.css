@@ -1,6 +1,7 @@
 body {
     background-image: url(../images/characterBG.png);
     background-position: center;
+    background-size: cover;
     color: white;
     font-family: kenney;
 
@@ -14,6 +15,7 @@ body {
 .jumbotron {
     opacity: 0.9;
     background-color: rgb(30, 37, 56);
+    word-break: break-word;
 }
 
 @font-face {
@@ -22,7 +24,7 @@ body {
 }
 
 h1 {
-    font-size: 65px;
+    font-size: 4em;
     font-family: saucer;
 }
 
@@ -37,9 +39,9 @@ h1 {
 
 
 #blastOff {
-    margin-top: 40px;
-    font-size: 25px;
-    box-shadow: 0px 0px 50px 15px #8a00ca;
+    margin-top: 1rem;
+    font-size: 1rem;
+    box-shadow: 0rem 0rem 1rem 1rem #8a00ca;
     background: #8700ca3D;
     color: white;
 }
@@ -58,15 +60,15 @@ h1 {
     line-height: 2em;
 }
 
-i{
-    font-size: 30px;
+i {
+    font-size: 1rem;
 }
 
-.fb-login-button{
-    text-align: center !important;
-}
-
-#facebook{
+#facebook {
     display: block;
     text-align: center;
+}
+
+#privacy{
+    text-shadow: 1px 1px 0 black;
 }

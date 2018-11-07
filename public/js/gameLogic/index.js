@@ -8,7 +8,7 @@ var goodEnding = {
 };
 
 var retireEnding = {
-    stuff: "You retired swine . . . I'm a bit hurt. Or that's what I would have said had been sad you left, but I'm not."
+    stuff: "You retired, swine . . . I'm a bit hurt. Or that's what I would have said had I been sad you left, but I'm not."
 };
 
 var badEnding = {

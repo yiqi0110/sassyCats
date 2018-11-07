@@ -68,6 +68,7 @@ button {
     border-color: black;
     padding-top: 8px;
     padding-bottom: 8px;
+    margin: 0.3rem;
 }
 
 button:hover {
@@ -106,6 +107,11 @@ button:hover {
     padding-top: 8px;
     padding-bottom: 8px;
     overflow: auto;
+}
+
+
+.stats {
+    margin-bottom:2rem;
 }
 
 #planet-move {

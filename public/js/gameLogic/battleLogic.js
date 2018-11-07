@@ -4,7 +4,7 @@
 var battleText = {
     startBattle: {
         tooBig: "What?! You wish to fight this planet?! Your skills are not as great as you think. . . You might as well give up. But if you really wish to fight I'll help since you'll need it. . . ",
-        tooSmall: "Nani!!! You really wish to waste your time on this measley planet? I suppose I'll help you wipe its existance from the universe. . . I'm not saying your that good. . . Just that your enemy is so weak.",
+        tooSmall: "Nani!!! You really wish to waste your time on this measley planet? I suppose I'll help you wipe its existance from the universe. . . I'm not saying you're that good. . . Just that your enemy is so weak.",
         justRight: "Hmmm. . . even though a child could conquer this planet. . . looks like you found a planet that you actually have a chance of defeating. . . Good luck, is what you thought I'd say, but nope! If you die, I'll take it as a direct insult you baffoon!",
         giveUp: "You wish to leave? You kitty-baffoon. . . If you wish to do so there's not much I can do. As long as you know the consequences."
     },
