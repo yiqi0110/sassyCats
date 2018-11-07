@@ -172,20 +172,23 @@ function battle(turns, player, planet) {
     function checkOutcome() {
         $("#planet-health").text(planet.hp);
         if (planet.hp <= 0) {
-            $("#outcomeModal").find(".modal-title").text("Victory!");
-            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
-            $("#outcomeModal").modal("toggle");
             player.hp = 500;
             player.attk = 10;
             player.level++;
             player.score += roundScore;
-            sessionStorage.setItem("player", JSON.stringify(player))
+            sessionStorage.setItem("player", JSON.stringify(player));
+            if (player.level === 10) {
+                location.href = "/win";
+            };
+            $("#outcomeModal").find(".modal-title").text("Victory!");
+            $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
+            $("#outcomeModal").modal("toggle");
 
         } else if (player.hp <= 0) {
-            $("#outcomeModal").find(".modal-title").text("Failure!")
+            $("#outcomeModal").find(".modal-title").text("Failure!");
             $("#outcome-body").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
             $("#outcomeModal").modal("toggle");
-            sessionStorage.setItem("player", JSON.stringify(player))
+            sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
@@ -193,7 +196,7 @@ function battle(turns, player, planet) {
             $("#prisonModal").modal("toggle");
             player.hp = 500;
             player.attk = 10;
-            sessionStorage.setItem("player", JSON.stringify(player))
+            sessionStorage.setItem("player", JSON.stringify(player));
         };
     };
 };
