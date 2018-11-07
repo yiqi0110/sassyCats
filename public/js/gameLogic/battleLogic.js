@@ -109,18 +109,24 @@ function battle(turns, player, planet) {
         planet.hp -= player.attk
         console.log(planet.name + "'s new health is " + planet.hp);
         planetsTurn[Math.floor(Math.random() * 3)]();
+        turns--;
+        $("#planetLeft").text(turns);
     })
     $("#charge").click(function () {
         // console.log(this.inBattle.chargeHit);
         player.attk *= 2;
         $("#player-move").text("You next attack damage will be " + player.attk + ". Like that'll be enough hahahah. . . ");
         planetsTurn[Math.floor(Math.random() * 3)]();
+        turns--;
+        $("#planetLeft").text(turns);
     })
     $("#block").click(function () {
         // console.log(this.inBattle.block);
         player.def *= 3;
         $("#player-move").text("You're only lucky that you're using me as a sheild. Or else you'd be dead.");
         planetsTurn[Math.floor(Math.random() * 3)]();
+        turns--;
+        $("#planetLeft").text(turns);
     })
 
     var planetsTurn = [
