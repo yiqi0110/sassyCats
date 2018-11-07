@@ -101,6 +101,7 @@ function battle(turns, player, planet) {
     // };
     $("#planetLeft").text(turns);
     $("#planet-health").html(planet.hp);
+    var roundScore = 1000;
 
     $("#attack").click(function () {
         // console.log(this.inBattle.attackHit);
@@ -110,6 +111,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
+        updateScore();
         checkOutcome();
     });
 
@@ -120,6 +122,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
+        updateScore();
         checkOutcome();
     });
 
@@ -130,6 +133,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
+        updateScore();
         checkOutcome();
     });
 
@@ -149,6 +153,22 @@ function battle(turns, player, planet) {
         }
     ];
 
+    function updateScore() {
+        if (planet.orbital_period > 200) {
+            roundScore = (roundScore - 83.33 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        } else if (planet.orbital_period <= 200) {
+            roundScore = (roundScore - 111.11 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        } else if (planet.orbital_period <= 75) {
+            roundScore = (roundScore - 166.66 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        } else if (planet.orbital_period <= 25) {
+            roundScore = (roundScore - 333.33 + 3.14).toFixed(2);
+            console.log("Score: " + roundScore);
+        }
+    }
+
     function checkOutcome() {
         $("#planet-health").text(planet.hp);
         if (planet.hp <= 0) {
@@ -158,6 +178,7 @@ function battle(turns, player, planet) {
             player.hp = 500;
             player.attk = 10;
             player.level++;
+            player.score += roundScore;
             sessionStorage.setItem("player", JSON.stringify(player))
 
         } else if (player.hp <= 0) {
@@ -172,7 +193,6 @@ function battle(turns, player, planet) {
             $("#prisonModal").modal("toggle");
             player.hp = 500;
             player.attk = 10;
-            player.level++;
             sessionStorage.setItem("player", JSON.stringify(player))
         };
     };
