@@ -1,15 +1,34 @@
 // Var ===================================================================
-
+var temp = sessionStorage.getItem("player");
+var newPlayer = $.parseJSON(temp);
 
 // End of Vars
 
 // Function declaration ==================================================
+$(document).ready(function () {
+    var daysArr = [];
+    for (var i = 1; i < 1000; i++){
+        daysArr.push(i);
+    };
+    var randDay = Math.floor(Math.random() * daysArr.length) + 1;
+    console.log(daysArr);
+    $(".statsName").text(newPlayer.userName);
+    $(".statsLevel").text(newPlayer.level);
+    $(".statsPower").text(newPlayer.score);
+    var currentDay = 5034562;
+    var newDay = parseInt(currentDay) + (randDay + newPlayer.level);
+    $("#day").text(newDay);
+})
+
 $(document).on("click", "#return2game", function () {
     location.href = "/ship";
 });
 $(document).on("click", "#continue2death", function () {
     giveUp(3);
 });
+
+
+
 
 function giveUp(percent) {
     // percent is the number of planets you have to conquer multipied by 10
@@ -21,7 +40,7 @@ function giveUp(percent) {
         $("#texto").text("Wow, you actually left. I'm almost a little sad you left. Just kidding. Ha. Ha. Ha. Ha. Ha. . . ");
         $("#return2game").hide();
         $("#continue2death").text("Leave. . .");
-        $(document).on("click", "#continue2death", function(){
+        $(document).on("click", "#continue2death", function () {
             document.body.innerHTML = '<h1>BYE BYE</h1>';
         });
     } else {
