@@ -6,18 +6,14 @@ var newPlayer = $.parseJSON(temp);
 
 // Function declaration ==================================================
 $(document).ready(function () {
-    var daysArr = [];
-    for (var i = 1; i < 1000; i++){
-        daysArr.push(i);
-    };
-    var randDay = Math.floor(Math.random() * daysArr.length) + 1;
     $("#charName").text(newPlayer.userName);
     $("#charImage").attr("src", newPlayer.avatar);
     $(".statsLevel").text(newPlayer.level);
     $(".statsPower").text(newPlayer.score);
-    var currentDay = 5034562;
-    var newDay = parseInt(currentDay) + (randDay + newPlayer.level);
-    $("#day").text(newDay);
+    $("#score").text(newPlayer.score);
+    var listPoint = $("li");
+    // Matthew this is where you should do the high scores stuff. this goes to the win.html
+    $("#highScores").append(listPoint);
 })
 
 $(document).on("click", "#return2game", function () {

@@ -99,7 +99,7 @@ button:hover {
 
 #player-move,
 #planet-move {
-    background: #8700ca3d;
+    background: #8700caa9;
     color: rgb(248, 255, 176);
     border-color: black;
     border-width: 3px;
@@ -116,4 +116,8 @@ button:hover {
 
 #planet-move {
     margin-top: 1em;
+}
+
+#point-outcome {
+    color: beige;
 }

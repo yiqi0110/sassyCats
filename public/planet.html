@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./styles/planet.css">
-
+    <link rel="icon" href="./images/icon.png">
     <title>Sassy Cat in Space</title>
 </head>
 
@@ -26,7 +26,7 @@
                         <br>
                         <li>Planet Type: <span id="planetType">#</span></li>
                         <li>Planet Health: <span id="planet-health">#</span></li>
-                        <li>Planet defends with <span id="compRoll">#</span> damage</li>
+                        <li><span id="planetName"></span> attacks with <span id="compRoll">#</span> damage</li>
                     </div>
                     <!-- Options -->
                     <div class="col log">
@@ -34,7 +34,7 @@
                         <br>
                         <li>Turns left to conquer: <span id="planetLeft">#</span></li>
                         <li>Your Heatlh: <span id="userDef">#</span></li>
-                        <li>You attacked with <span id="userRoll">#</span> damage</li>
+                        <li><span id="playerName"></span> attacks with <span id="userRoll">#</span> damage</li>
                     </div>
                 </div>
             </div>
@@ -75,9 +75,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel">Modal title</h5>
                 </div>
-                <div id="outcome-body" class="modal-body">
-
-                </div>
+                <div id="outcome-body" class="modal-body"></div>
+                <div id="point-body"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary escape">Return to Ship</button>
                 </div>

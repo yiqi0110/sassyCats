@@ -34,7 +34,7 @@ var newPlayer = $.parseJSON(temp);
 function getPlanet() {
     $.get("/api/planets", function (data) {
         randomPlanet = data[Math.floor(Math.random() * 3827)];
-        planetVSplayer(newPlayer, randomPlanet)
+        planetVSplayer(newPlayer, randomPlanet);
     });
 };
 
@@ -59,23 +59,25 @@ function planetVSplayer(player, planet) {
         level: player.level,
         id: player.id
     }; // these will be effected by the players level at each battle
-
-
-
+    
+    $("#playerName").text(player.userName);
+    $("#planetName").text(planet.name);
+    
+    
     // planet is extra small 3 TURNS
-    if (planet.orbital_period <= 25) {
+    if (planet.orbital_period <= 100) {
         turns = 3;
         planet.hp = 40;
         $("#player-move").text(battleText.startBattle.tooSmall);
     }
     // planet is small 6 TURNS
-    else if (planet.orbital_period <= 75) {
+    else if (planet.orbital_period <= 500) {
         turns = 6;
         planet.hp = 100;
         $("#player-move").text(battleText.startBattle.tooSmall);
     }
     // planet is medium 9 TURNS
-    else if (planet.orbital_period <= 200) {
+    else if (planet.orbital_period <= 1000) {
         turns = 9;
         planet.hp = 150;
         $("#player-move").text(battleText.startBattle.justRight);
@@ -122,7 +124,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
-        updateScore();
+        updateScore("attack");
         checkOutcome();
     });
 
@@ -133,7 +135,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
-        updateScore();
+        updateScore("charge");
         checkOutcome();
     });
 
@@ -144,7 +146,7 @@ function battle(turns, player, planet) {
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
-        updateScore();
+        updateScore("heal");
         checkOutcome();
     });
 
@@ -164,19 +166,51 @@ function battle(turns, player, planet) {
         }
     ];
 
-    function updateScore() {
-        if (planet.orbital_period > 200) {
-            roundScore = (roundScore - 83.33 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
-        } else if (planet.orbital_period <= 200) {
-            roundScore = (roundScore - 111.11 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
-        } else if (planet.orbital_period <= 75) {
-            roundScore = (roundScore - 166.66 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
-        } else if (planet.orbital_period <= 25) {
-            roundScore = (roundScore - 333.33 + 3.14).toFixed(2);
-            console.log("Score: " + roundScore);
+    function updateScore(moveType) {
+        if (planet.orbital_period <= 100) {
+            if(moveType === "attack"){
+                roundScore = (parseInt(roundScore) - 123.33 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "charge"){
+                roundScore = (parseInt(roundScore) - 111.11 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "heal"){
+                roundScore = (parseInt(roundScore) + 100.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            }
+        } else if (planet.orbital_period <= 500) {
+            if(moveType === "attack"){
+                roundScore = (parseInt(roundScore) - 86.66 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "charge"){
+                roundScore = (parseInt(roundScore) - 43.11 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "heal"){
+                roundScore = (parseInt(roundScore) + 100.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            }
+        } else if (planet.orbital_period <= 1000) {
+            if(moveType === "attack"){
+                roundScore = (parseInt(roundScore) - 56.11 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "charge"){
+                roundScore = (parseInt(roundScore) - 26.11 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "heal"){
+                roundScore = (parseInt(roundScore) + 100.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            }
+        } else if (planet.orbital_period > 1000) {
+            if(moveType === "attack"){
+                roundScore = (parseInt(roundScore) - 43.63 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "charge"){
+                roundScore = (parseInt(roundScore) - 25.11 + 3.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            } else if (moveType === "heal"){
+                roundScore = (parseInt(roundScore) + 100.14).toFixed(2);
+                console.log("Score: " + parseInt(roundScore));
+            }
         }
     }
 
@@ -190,7 +224,7 @@ function battle(turns, player, planet) {
             player.hp = 500;
             player.attk = 10;
             player.level++;
-            player.score += roundScore;
+            player.score += parseInt(roundScore);
             sessionStorage.setItem("player", JSON.stringify(player));
             //Create dummy player object for sql high scores
             var highscorePlayer = {
@@ -210,6 +244,7 @@ function battle(turns, player, planet) {
             };
             $("#outcomeModal").find(".modal-title").text("Victory!");
             $("#outcome-body").text("Congratulations! You Conquered " + planet.name + "!");
+            $("#point-body").html(player.userName+" finished with <strong id='point-outcome'>"+ roundScore + "</strong> points this round.\nYour new Political Influnce is <strong id='point-outcome'>"+ player.score + "</strong>");
             $("#outcomeModal").modal("toggle");
 
         } else if (player.hp <= 0) {
@@ -217,10 +252,11 @@ function battle(turns, player, planet) {
             $("#prisonModal").find("#prisonBody").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").find("#fight").hide();
-            $("#outcomeModal").modal("toggle");
+            $("#prisonModal").modal("toggle");
             sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
+            $("#prisonModal").find(".modal-title").text("Failure!");
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
             $("#prisonModal").modal("toggle");

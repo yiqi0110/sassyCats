@@ -55,6 +55,6 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#wuss", function () {
-        location.href = "/ending";
+        location.href = "/wuss";
     });
 });
