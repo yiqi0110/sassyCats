@@ -56,7 +56,8 @@ function planetVSplayer(player, planet) {
         score: player.score,
         attk: player.attk,
         hp: player.hp,
-        level: player.level
+        level: player.level,
+        id: player.id
     }; // these will be effected by the players level at each battle
     
     $("#playerName").text(player.userName);
@@ -218,12 +219,26 @@ function battle(turns, player, planet) {
         $("#userDef").text(player.hp);
         $("#compRoll").text(planet.attk);
         $("#userRoll").text(player.attk);
+
         if (planet.hp <= 0) {
             player.hp = 500;
             player.attk = 10;
             player.level++;
             player.score += parseInt(roundScore);
             sessionStorage.setItem("player", JSON.stringify(player));
+            //Create dummy player object for sql high scores
+            var highscorePlayer = {
+                player_name: player.name,
+                player_score: player.score,
+                player_id: player.id
+            }
+
+            $.ajax({
+                method: "PUT",
+                url: "/api/scores",
+                data: highscorePlayer
+            });
+
             if (player.level === 10) {
                 location.href = "/win";
             };
@@ -253,6 +268,7 @@ function battle(turns, player, planet) {
 };
 
 function updateScore(score) {
+    // console.log("test")
     $.ajax({
         method: "PUT",
         url: "/api/scores",

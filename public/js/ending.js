@@ -1,4 +1,18 @@
 $(document).ready(function () {
+    var temp = sessionStorage.getItem("player");
+    var newPlayer = $.parseJSON(temp);
+
+    // Set user score
+    $("#userScore").text(newPlayer.score);
+
+    //Get highscores
+    $.get("api/highscores", function(data){
+        for(var i = 0; i < data.length; i++){
+            var listItem = $("<li>" + data[i].player_name + ": " + data[i].player_score + "</li>");
+            $("#highScores").append(listItem);
+        };
+    });
+
     $(document).on("click", "#newGame", function () {
         // Reset all game stats here
         location.href = "/";
@@ -16,5 +30,4 @@ $(document).ready(function () {
     $(document).on("click", "#wuss", function () {
         location.href = "/wuss";
     });
-
-})
+});
