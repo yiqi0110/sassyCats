@@ -34,11 +34,10 @@ $(document).ready(function () {
 
     //Get highscores
     $.get("api/highscores", function(data){
-        console.log(data);
         for(var i = 0; i < data.length; i++){
             var listItem = $("<li>" + data[i].player_name + ": " + data[i].player_score + "</li>");
             $("#highScores").append(listItem);
-        }
+        };
     });
 
     $(document).on("click", "#newGame", function () {
@@ -58,5 +57,4 @@ $(document).ready(function () {
     $(document).on("click", "#wuss", function () {
         location.href = "/ending";
     });
-
-})
+});
