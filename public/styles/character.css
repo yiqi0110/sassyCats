@@ -69,6 +69,23 @@ i {
     text-align: center;
 }
 
-#privacy{
+#privacy {
     text-shadow: 1px 1px 0 black;
+}
+
+@media only screen and (min-width: 1500px) {
+    body {
+        height: -webkit-fill-available;
+    }
+
+    .container {
+        max-width: 70%;
+        position: relative;
+        top: 10%;
+    }
+
+    a {
+        position: relative;
+        top: 10rem;
+    }
 }
