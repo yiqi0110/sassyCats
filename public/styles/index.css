@@ -64,3 +64,19 @@ p {
   text-align: center;
   font-size: 12px;
 }
+
+@media only screen and (min-width: 1500px) {
+  #startButton {
+    font-size: 4vw;
+  }
+  body{
+    height: -webkit-fill-available;
+  }
+  .container{
+    height: -webkit-fill-available;
+    max-width: 80%;
+    position: relative;
+    top: 15%;
+  }
+
+}
