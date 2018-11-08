@@ -117,3 +117,7 @@ button:hover {
 #planet-move {
     margin-top: 1em;
 }
+
+#point-outcome {
+    color: beige;
+}

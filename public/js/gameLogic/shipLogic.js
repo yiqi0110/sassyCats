@@ -11,6 +11,9 @@ $(document).ready(function () {
     $(".statsLevel").text(newPlayer.level);
     $(".statsPower").text(newPlayer.score);
     $("#score").text(newPlayer.score);
+    var listPoint = $("li");
+    // Matthew this is where you should do the high scores stuff. this goes to the win.html
+    $("#highScores").append(listPoint);
 })
 
 $(document).on("click", "#return2game", function () {
