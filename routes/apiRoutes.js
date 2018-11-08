@@ -45,7 +45,7 @@ module.exports = function (app) {
   app.get("/api/highscores", function (req, res) {
     db.Scores.findAll({
       order: [["player_score", "DESC"]],
-      limit: 3
+      limit: 10
     }).then(function(results){
       res.json(results);
     });
