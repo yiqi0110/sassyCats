@@ -43,7 +43,7 @@ module.exports = function (app) {
       player_score: req.body.player_score
     }, {
       where: {
-        id: req.body.id
+        id: req.body.player_id
       }
     }).then(function (results) {
       res.json(results);
