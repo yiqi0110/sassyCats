@@ -8,15 +8,6 @@ module.exports = function (app) {
     });
   });
 
-  // app.get("/api/randomplanet", function (req, res) {
-  //   db.Planets.findOne({
-  //     order: Sequelize.literal('rand()')
-  //   }).then(function (dbPlanets) {
-  //     res.json(dbPlanets);
-  //     return res.end();
-  //   });
-  // })
-
   // Get all users and scores
   app.get("/api/scores", function (req, res) {
     db.Scores.findAll({}).then(function (dbScores) {
@@ -48,5 +39,15 @@ module.exports = function (app) {
     }).then(function (results) {
       res.json(results);
     })
+  });
+
+  //Get top 3 scores
+  app.get("/api/highscores", function (req, res) {
+    db.Scores.findAll({
+      order: [["player_score", "DESC"]],
+      limit: 3
+    }).then(function(results){
+      res.json(results);
+    });
   });
 };
