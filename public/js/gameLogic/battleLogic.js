@@ -120,7 +120,6 @@ function battle(turns, player, planet) {
         // console.log(this.inBattle.attackHit);
         $("#player-move").text("You insult me with that measley attempt at a hit. . . You dealed " + player.attk + " points of attack.");
         planet.hp -= player.attk
-        console.log(planet.name + "'s new health is " + planet.hp);
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
@@ -131,7 +130,7 @@ function battle(turns, player, planet) {
     $("#charge").click(function () {
         // console.log(this.inBattle.chargeHit);
         player.attk *= 2;
-        $("#player-move").text("You next attack damage will be " + player.attk + ". Like that'll be enough hahahah. . . ");
+        $("#player-move").text("Your next attack damage will be " + player.attk + ". Like that'll be enough hahahah. . . ");
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
@@ -142,7 +141,7 @@ function battle(turns, player, planet) {
     $("#heal").click(function () {
         // console.log(this.inBattle.block);
         player.hp *= 2;
-        $("#player-move").text("You're only lucky that you're using me as a sheild. Or else you'd be dead.");
+        $("#player-move").text("Your health increased to " + player.hp + ", but you don't look any better to me.");
         planetsTurn[Math.floor(Math.random() * 3)]();
         turns--;
         $("#planetLeft").text(turns);
@@ -153,15 +152,15 @@ function battle(turns, player, planet) {
     var planetsTurn = [
         function planetAttack() {
             player.hp -= planet.attk;
-            $("#planet-move").text("ACK!!! Why did you allow them to damage me!? Your remaining health is " + player.hp + ".");
+            $("#planet-move").text("ACK!!! Why did you allow yourself to be damaged!? Your remaining health is " + player.hp + ".");
         },
         function planetCharge() {
             planet.attk *= 2;
-            $("#planet-move").text("Wait. . . Why did they stop their attack. . . Their probably charging up for their next attack, not that I think you'll be able to do anything about it. Ha.");
+            $("#planet-move").text("Wait. . . Why did they stop their attack. . . They're probably charging up for their next attack, not that I think you'll be able to do anything about it. Ha.");
         },
         function planetHeal() {
             planet.hp *= 2;
-            $("#planet-move").text("Wait? There not doing anything? Figure out what there doing you hooligan!");
+            $("#planet-move").text("Wait? The planet isn't doing anything? Figure out what they're doing you hooligan!");
             turns++
         }
     ];
