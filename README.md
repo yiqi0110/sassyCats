@@ -48,6 +48,7 @@ Image
 #### There is very little hope that you will ever win a game.  I suggest that you just give up now.  However, if you think you might be up to the challenge then you'll need to learn the patterns that the inhabitants of these planets use to defend themselves.  Once you've done that then galactic domination is yours!  
 
 Image
+
  ![alt text](./readmeImages/death.png "Death, as expected")
 
 
