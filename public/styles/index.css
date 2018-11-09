@@ -65,7 +65,7 @@ p {
   font-size: 12px;
 }
 
-@media only screen and (min-width: 1500px) {
+/* @media only screen and (min-width: 1500px) {
   #startButton {
     font-size: 4vw;
   }
@@ -79,4 +79,4 @@ p {
     top: 15%;
   }
 
-}
+} */

@@ -92,7 +92,7 @@ ol {
     background-image: url("../images/wuss.png")
 }
 
-@media only screen and (min-width: 1500px) {
+/* @media only screen and (min-width: 1500px) {
     body {
         height: -webkit-fill-available;
     }
@@ -102,4 +102,4 @@ ol {
         position: relative;
         top: 10%;
     }
-}
+} */

@@ -73,7 +73,7 @@ i {
     text-shadow: 1px 1px 0 black;
 }
 
-@media only screen and (min-width: 1500px) {
+/* @media only screen and (min-width: 1500px) {
     body {
         height: -webkit-fill-available;
     }
@@ -88,4 +88,4 @@ i {
         position: relative;
         top: 10rem;
     }
-}
+} */

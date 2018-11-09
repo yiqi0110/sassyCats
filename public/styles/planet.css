@@ -122,7 +122,7 @@ button:hover {
     color: beige;
 }
 
-@media only screen and (min-width: 1500px) {
+/* @media only screen and (min-width: 1500px) {
     body {
         height: -webkit-fill-available;
     }
@@ -133,4 +133,4 @@ button:hover {
         top: 10%;
         height: 10rem;
     }
-}
+} */
