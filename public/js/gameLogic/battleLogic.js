@@ -233,7 +233,7 @@ function battle(turns, player, planet) {
             }
 
             $.ajax({
-                method: "PUT",
+                method: "POST",
                 url: "/api/scores",
                 data: highscorePlayer
             });
@@ -266,11 +266,3 @@ function battle(turns, player, planet) {
     };
 };
 
-function updateScore(score) {
-    // console.log("test")
-    $.ajax({
-        method: "PUT",
-        url: "/api/scores",
-        data: score
-    });
-};
