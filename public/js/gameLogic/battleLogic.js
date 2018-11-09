@@ -44,7 +44,7 @@ function planetVSplayer(player, planet) {
     // for each turn the player has 3 options of attack, "attack", "charge"(this will give the player a multipier for their attack), and "block"
     var turns = 0; // 3 for xs, 6 for sm, 9 for md, 12 for lg  // player and planet are both given the same number of turns
     var planet = {
-        attk: 100,
+        attk: 75,
         hp: 0,
         level: player.level,
         name: planet.planet_name,
@@ -220,10 +220,12 @@ function battle(turns, player, planet) {
         $("#userRoll").text(player.attk);
 
         if (planet.hp <= 0) {
+            var planetOn = 0;
             player.hp = 500;
-            player.attk = 10;
             player.level++;
-            player.score += parseInt(roundScore);
+            player.score += parseInt(roundScore) + (planet.hp * planet.hp);
+            planetOn = player.level;
+            player.attk = (planetOn * 3) + 10;
             sessionStorage.setItem("player", JSON.stringify(player));
             //Create dummy player object for sql high scores
             var highscorePlayer = {
@@ -238,7 +240,7 @@ function battle(turns, player, planet) {
                 data: highscorePlayer
             });
 
-            if (player.level === 10) {
+            if (player.level >= 10) {
                 location.href = "/win";
             };
             $("#outcomeModal").find(".modal-title").text("Victory!");

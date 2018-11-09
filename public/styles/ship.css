@@ -84,15 +84,15 @@ button:hover {
 #charName{
     font-size: 1rem;
 }
-/* 
+
 @media only screen and (min-width: 1500px) {
     body {
         height: -webkit-fill-available;
     }
 
-    .container {
+    #mediaCont {
         max-width: 70%;
         position: relative;
-        top: 10%;
+        top: 5%;
     }
-} */
+}
