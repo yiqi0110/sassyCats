@@ -235,7 +235,7 @@ function battle(turns, player, planet) {
             }
 
             $.ajax({
-                method: "POST",
+                method: "PUT",
                 url: "/api/scores",
                 data: highscorePlayer
             });
