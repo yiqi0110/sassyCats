@@ -249,6 +249,11 @@ function battle(turns, player, planet) {
             $("#outcomeModal").modal("toggle");
 
         } else if (player.hp <= 0) {
+            $.ajax({
+                method: "PUT",
+                url: "/api/scores",
+                data: highscorePlayer
+            });
             $("#prisonModal").find(".modal-title").text("Failure!");
             $("#prisonModal").find("#prisonBody").text("You died like a little child!  I had no faith in you and even I'm disappointed.");
             $("#prisonModal").find(".escape").hide();
@@ -257,6 +262,11 @@ function battle(turns, player, planet) {
             sessionStorage.setItem("player", JSON.stringify(player));
 
         } else if (turns === 0) {
+            $.ajax({
+                method: "PUT",
+                url: "/api/scores",
+                data: highscorePlayer
+            });
             $("#prisonModal").find(".modal-title").text("Failure!");
             $("#prisonModal").find("#prisonBody").text("You are enprisoned as a slave!  The guards here don't like to deal with escaping prisoners so they just kill anyone who tries to run.  You have one chance to escape or you can live out the rest of your days as a slave.");
             $("#prisonModal").find(".escape").hide();
