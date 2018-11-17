@@ -223,7 +223,7 @@ function battle(turns, player, planet) {
             var planetOn = 0;
             player.hp = 500;
             player.level++;
-            player.score += parseInt(roundScore) + (planet.hp * planet.hp);
+            player.score += parseInt((roundScore) + (planet.hp * planet.hp));
             planetOn = player.level;
             player.attk = (planetOn * 3) + 10;
             sessionStorage.setItem("player", JSON.stringify(player));
