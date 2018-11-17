@@ -65,7 +65,7 @@ function planetVSplayer(player, planet) {
     
     
     // planet is extra small 3 TURNS
-    if (planet.orbital_period <= 100) {
+    if (planet.orbital_period <= 25) {
         turns = 3;
         planet.hp = 40;
         $("#player-move").text(battleText.startBattle.tooSmall);
